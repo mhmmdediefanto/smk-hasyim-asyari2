@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\AuthController;
 use Illuminate\Support\Facades\Route;
 
 Route::get('/', function () {
@@ -7,9 +8,8 @@ Route::get('/', function () {
 })->name('home');
 
 // route auth
-Route::get('/login', function () {
-    return view('auth.login');
-})->name('login');
+Route::get('/login', [AuthController::class, 'login'])->name('login');
+Route::post('/login', [AuthController::class, 'authenticate'])->name('authenticate');
 
 Route::get('/register', function () {
     return view('auth.register');
@@ -63,6 +63,13 @@ Route::prefix('sarana-prasarana')->group(function () {
 Route::prefix('portal')->group(function () {
     Route::get('/ppdb', fn() => redirect()->route('maintenance'))->name('ppdb');
     Route::get('/absensi-pkl', fn() => redirect()->route('maintenance'))->name('absensi-pkl');
+});
+
+
+Route::group(['middleware' => 'auth'], function () {
+    Route::get('/dashboard', function () {
+        return view('dashboard.index');
+    })->name('dashboard');
 });
 
 // route 404
