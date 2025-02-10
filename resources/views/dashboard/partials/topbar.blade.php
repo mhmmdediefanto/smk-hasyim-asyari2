@@ -15,7 +15,7 @@
     </button>
 
     <!-- Page Title -->
-    <h4 class="text-slate-900 text-lg font-medium">@@title</h4>
+    <h4 class="text-slate-900 text-lg font-medium">{{ auth()->user()->name }}</h4>
 
     <button id="button-toggle-profile" class="nav-link p-2 ms-auto">
         <span class="sr-only">Profile Menu Offcanvas Button</span>

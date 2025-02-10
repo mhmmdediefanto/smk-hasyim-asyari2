@@ -164,7 +164,7 @@
                         </a>
                     </li>
                 </ul>
-            </li>            
+            </li>
 
             <li class="menu-item">
                 <a href="javascript:void(0)" data-hs-collapse="#sidenavMaps" class="menu-link">
@@ -230,13 +230,16 @@
             </li>
 
             <li class="menu-item">
-                <a href="javascript:void(0)" class="menu-link">
-                    <span class="menu-icon">
-                        <i class="uil uil-arrow-circle-right"></i>
-                    </span>
-                    <span class="menu-text"> Badge Items </span>
-                    <span class="badge bg-danger rounded ms-auto">Hot</span>
-                </a>
+                <form action="{{ route('logout') }}" method="post">
+                    @csrf
+                    <button href="javascript:void(0)" class="menu-link">
+                        <span class="menu-icon">
+                            <i class="uil uil-arrow-circle-right"></i>
+                        </span>
+                        <span class="menu-text"> Logout </span>
+
+                    </button>
+                </form>
             </li>
         </ul>
     </div>

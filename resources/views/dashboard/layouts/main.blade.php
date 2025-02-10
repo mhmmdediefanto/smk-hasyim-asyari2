@@ -43,6 +43,10 @@
     <script src="{{ asset('assets/libs/node-waves/waves.min.js') }}"></script>
     <script src="{{ asset('assets/libs/preline/preline.js') }}"></script>
 
+
+
+    
+    <script src="{{ asset('assets/libs/jquery/jquery.min.js') }}"></script>
     <!-- App Js -->
     <script src="{{ asset('assets/js/app.js') }}"></script>
 
