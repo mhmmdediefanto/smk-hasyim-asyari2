@@ -13,3 +13,6 @@
     @viteReactRefresh
     @vite(['resources/js/app.js', 'resources/css/app.css'])
   @endif
+
+
+  https://www.youtube.com/watch?v=IEZr1-KszYA

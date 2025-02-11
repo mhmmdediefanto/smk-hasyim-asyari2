@@ -4,9 +4,77 @@
 <head>
     <meta charset="utf-8">
     <meta content="width=device-width, initial-scale=1.0" name="viewport">
-    <title> SKAHADA - SMK NU-HASYIM ASYARI 2 </title>
-    <meta name="description" content="">
-    <meta name="keywords" content="">
+    <meta name="robots" content="index, follow">
+    <!-- Meta Description -->
+    <meta name="description"
+        content="SMK NU Hasyim Asy'ari 2 Kudus menyediakan sistem informasi sekolah berbasis web untuk mempermudah administrasi, absensi, dan layanan akademik siswa serta tenaga pendidik.">
+
+    <!-- Meta Keywords -->
+    <meta name="keywords"
+        content="SMK NU Hasyim Asy'ari 2 Kudus, sistem informasi sekolah, absensi online, pendidikan, sekolah terbaik di Kudus, akademik SMK NU Kudus, sistem akademik digital">
+
+    <!-- Meta Author -->
+    <meta name="author" content="SMK NU Hasyim Asy'ari 2 Kudus">
+
+    <meta name="google-site-verification" content="kode_verifikasi_google">
+    <meta name="msvalidate.01" content="kode_verifikasi_bing">
+
+
+    <!-- Open Graph untuk Facebook -->
+    <meta property="og:title" content="SMK NU Hasyim Asy'ari 2 Kudus - Sistem Informasi Sekolah">
+    <meta property="og:description"
+        content="SMK NU Hasyim Asy'ari 2 Kudus menyediakan sistem informasi sekolah berbasis web untuk kemudahan akademik dan administrasi siswa serta guru.">
+    <meta property="og:image" content="https://www.example.com/logo-smk-nu.jpg"> <!-- Ganti dengan URL gambar -->
+    <meta property="og:url" content="{{ url()->current() }}">
+    <meta property="og:type" content="website">
+    
+    <!-- Meta Title -->
+    <title>SMK NU Hasyim Asy'ari 2 Kudus - Sistem Informasi Sekolah Terintegrasi</title>
+
+
+    <!-- Twitter Card -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="SMK NU Hasyim Asy'ari 2 Kudus - Sistem Informasi Sekolah">
+    <meta name="twitter:description"
+        content="Sistem informasi sekolah digital untuk mendukung kegiatan akademik di SMK NU Hasyim Asy'ari 2 Kudus.">
+    <meta name="twitter:image" content="https://www.example.com/logo-smk-nu.jpg"> <!-- Ganti dengan URL gambar -->
+
+    <!-- Canonical URL -->
+    <link rel="canonical" href="https://www.example.com"> <!-- Ganti dengan URL website -->
+
+    <!-- Favicon -->
+    <link rel="icon" href="https://www.example.com/favicon.ico" type="image/x-icon">
+    <!-- Ganti dengan URL favicon -->
+
+    <!-- Schema Markup JSON-LD -->
+    <script type="application/ld+json">
+        {
+            "@context": "https://schema.org",
+            "@type": "EducationalOrganization",
+            "name": "SMK NU Hasyim Asy'ari 2 Kudus",
+            "url": "https://www.smkhasyimasyari2kudus.ac.id",
+            "logo": "https://www.smkhasyimasyari2kudus.ac.id/logo.jpg",
+            "address": {
+                "@type": "PostalAddress",
+                "streetAddress": "Jl. KH Hasyim Asy'ari No. 2",
+                "addressLocality": "Kudus",
+                "addressRegion": "Jawa Tengah",
+                "postalCode": "59319",
+                "addressCountry": "ID"
+            },
+            "contactPoint": {
+                "@type": "ContactPoint",
+                "telephone": "+62 812-3456-7890",
+                "contactType": "customer service",
+                "availableLanguage": "Indonesian"
+            },
+            "sameAs": [
+                "https://www.facebook.com/smkhasyimasyari2kudus",
+                "https://www.instagram.com/smkhasyimasyari2kudus"
+            ]
+        }
+        </script>
+
 
     <!-- Favicons -->
     <link href="assets/img/favicon.png" rel="icon">

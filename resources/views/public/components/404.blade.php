@@ -4,6 +4,7 @@
 <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <script src="https://cdn.tailwindcss.com"></script>
     <style>
         .emoji-404 {
 
@@ -31,8 +32,8 @@
 </head>
 
 <body>
-    <div class="bg-gray-100 h-screen justify-center">
-        <center class="mt-24 m-auto">
+    <div class="bg-blue-300 h-screen justify-center">
+        <center class="mt-0 m-auto">
             <svg class="emoji-404 " enable-background="new 0 0 226 249.135" height="249.135" id="Layer_1"
                 overflow="visible" version="1.1" viewBox="0 0 226 249.135" width="226" xml:space="preserve">
                 <circle cx="113" cy="113" fill="#FFE585" r="109" />
@@ -66,7 +67,7 @@
             </div>
         </center>
         <center class="mt-6">
-            <a href="{{ route('/') }}" class="text-gray-500 font-mono text-xl bg-gray-200 p-3 rounded-md hover:shadow-md">Go back
+            <a href="{{ route('home') }}" class="text-gray-500 font-mono text-xl bg-gray-200 p-3 rounded-md hover:shadow-md">Go back
             </a>
         </center>
     </div>
