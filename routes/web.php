@@ -1,6 +1,8 @@
 <?php
 
 use App\Http\Controllers\AuthController;
+use App\Http\Controllers\BeritaController;
+use App\Http\Controllers\DashboardBeritaController;
 use Illuminate\Support\Facades\Route;
 
 Route::get('/', function () {
@@ -68,9 +70,16 @@ Route::prefix('portal')->group(function () {
 
 
 Route::group(['middleware' => 'auth'], function () {
-    Route::get('/dashboard', function () {
-        return view('dashboard.index');
-    })->name('dashboard');
+    Route::prefix('dashboard')->group(function () {
+        Route::get('/', function () {
+            return view('dashboard.index');
+        })->name('dashboard');
+
+
+        // berita
+        Route::get('/berita',[DashboardBeritaController::class, 'index'])->name('dashboard.berita');
+        Route::get('/berita/create',[DashboardBeritaController::class, 'create'])->name('dashboard.berita.create');
+    });
 });
 
 // route 404

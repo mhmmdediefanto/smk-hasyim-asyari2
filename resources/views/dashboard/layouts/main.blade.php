@@ -15,9 +15,14 @@
     <!-- Head Js -->
     <script src="{{ asset('assets/js/head.js') }}"></script>
 
+    <script src="{{ asset('assets/libs/jquery/jquery.min.js') }}"></script>
     {{-- link inport tailwind --}}
     @vite('resources/css/app.css')
 
+    @stack('styles')
+
+    {{-- CKEditor CDN --}}
+    <script src="https://cdn.ckeditor.com/ckeditor5/39.0.1/classic/ckeditor.js"></script>
 
     <title>Dashboard - SKAHADA</title>
 </head>
@@ -38,18 +43,18 @@
         </div>
     </div>
 
+
+    @stack('scripts')
+
+    @vite(['resources/js/app.js'])
     <!-- Plugin Js -->
     <script src="{{ asset('assets/libs/simplebar/simplebar.min.js') }}"></script>
     <script src="{{ asset('assets/libs/node-waves/waves.min.js') }}"></script>
     <script src="{{ asset('assets/libs/preline/preline.js') }}"></script>
 
 
-
-    
-    <script src="{{ asset('assets/libs/jquery/jquery.min.js') }}"></script>
     <!-- App Js -->
     <script src="{{ asset('assets/js/app.js') }}"></script>
-
     <script src="{{ asset('assets/js/pages/dashboard.js') }}"></script>
 </body>
 
