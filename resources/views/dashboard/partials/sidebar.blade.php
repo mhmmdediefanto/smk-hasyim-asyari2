@@ -13,7 +13,7 @@
             <li class="menu-title">Menu</li>
 
             <li class="menu-item">
-                <a href="index.html" class="menu-link">
+                <a href="{{ route('dashboard') }}" class="menu-link">
                     <span class="menu-icon"><i class="uil uil-estate"></i></span>
                     <span class="menu-text"> Dashboard </span>
                     <span class="badge bg-primary rounded ms-auto">01</span>
@@ -21,9 +21,32 @@
             </li>
 
             <li class="menu-item">
+                <a href="javascript:void(0)" data-hs-collapse="#beritaInformasi" class="menu-link">
+                    <span class="menu-icon"><i class="uil uil-file-plus"></i></span>
+                    <span class="menu-text"> Berita - Informasi </span>
+                    <span class="menu-arrow"></span>
+                </a>
+
+                <ul id="beritaInformasi" class="sub-menu hidden">
+                    <li class="menu-item">
+                        <a href="{{ route('dashboard.berita') }}" class="menu-link">
+                            <span class="menu-dot"></span>
+                            <span class="menu-text">Berita</span>
+                        </a>
+                    </li>
+                    <li class="menu-item">
+                        <a href="#" class="menu-link">
+                            <span class="menu-dot"></span>
+                            <span class="menu-text">Kategori Berita</span>
+                        </a>
+                    </li>
+                </ul>
+            </li>
+
+            <li class="menu-item">
                 <a href="chat.html" class="menu-link">
                     <span class="menu-icon"><i class="uil uil-hipchat"></i></span>
-                    <span class="menu-text"> AI Chat </span>
+                    <span class="menu-text"> Berita - Informasi </span>
                 </a>
             </li>
 
