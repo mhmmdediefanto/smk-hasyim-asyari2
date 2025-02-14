@@ -5,6 +5,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <meta name="csrf-token" content="{{ csrf_token() }}">
 
 
     <!-- App css -->
@@ -20,6 +21,8 @@
     @vite('resources/css/app.css')
 
     @stack('styles')
+
+    @include('sweetalert::alert')
 
     {{-- CKEditor CDN --}}
     <script src="https://cdn.ckeditor.com/ckeditor5/39.0.1/classic/ckeditor.js"></script>

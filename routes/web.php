@@ -1,13 +1,11 @@
 <?php
 
 use App\Http\Controllers\AuthController;
-use App\Http\Controllers\BeritaController;
 use App\Http\Controllers\DashboardBeritaController;
+use App\Http\Controllers\PublicController;
 use Illuminate\Support\Facades\Route;
 
-Route::get('/', function () {
-    return view('public.index');
-})->name('home');
+Route::get('/', [PublicController::class, 'index'])->name('home');
 
 // route auth
 Route::get('/login', [AuthController::class, 'login'])->name('login')->middleware('guest');
@@ -77,8 +75,11 @@ Route::group(['middleware' => 'auth'], function () {
 
 
         // berita
-        Route::get('/berita',[DashboardBeritaController::class, 'index'])->name('dashboard.berita');
-        Route::get('/berita/create',[DashboardBeritaController::class, 'create'])->name('dashboard.berita.create');
+        Route::get('/berita', [DashboardBeritaController::class, 'index'])->name('dashboard.berita');
+        Route::get('/berita/create', [DashboardBeritaController::class, 'create'])->name('dashboard.berita.create');
+        Route::post('/berita/store', [DashboardBeritaController::class, 'store'])->name('dashboard.berita.store');
+        Route::post('/berita/upload-image', [DashboardBeritaController::class, 'uploadImage'])->name('dashboard.berita.uploadImage');
+        Route::get('/berita/checkSlug', [DashboardBeritaController::class, 'checkSlug'])->name('dashboard.berita.checkSlug');
     });
 });
 

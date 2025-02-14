@@ -4,9 +4,9 @@
     <div class="w-full">
         <div class="card overflow-hidden">
             <div class="card-header flex justify-between items-center">
-                <h4 class="card-title">Data Berita</h4>
+                <h4 class="card-title font-nunito">Data Berita</h4>
                 <a href="{{ route('dashboard.berita.create') }}"
-                    class=" py-1 px-2 bg-cyan-500 !text-sm text-white hover:bg-cyan-600 active:bg-cyan-400 cursor-pointer rounded-sm ">Tambah
+                    class=" py-1 px-2 bg-cyan-500 font-nunito !text-sm text-white hover:bg-cyan-600 active:bg-cyan-400 cursor-pointer rounded-sm ">Tambah
                     Berita</a>
             </div>
 
@@ -15,106 +15,55 @@
                     <div class="overflow-hidden">
                         <table class="min-w-full">
                             <thead class="bg-light/40 border-b border-gray-200">
-                                <tr>
-                                    <th class="px-6 py-3 text-start">Product</th>
-                                    <th class="px-6 py-3 text-start">Customers</th>
-                                    <th class="px-6 py-3 text-start">Categories</th>
-                                    <th class="px-6 py-3 text-start">Popularity</th>
-                                    <th class="px-6 py-3 text-start">Amount</th>
+                                <tr class="capitalize font-nunito">
+                                    <th class="px-6 py-3 text-start">image</th>
+                                    <th class="px-6 py-3 text-start">title</th>
+                                    <th class="px-6 py-3 text-start">Category</th>
+                                    <th class="px-6 py-3 text-start">action</th>
                                 </tr>
                             </thead>
                             <tbody>
-                                <tr class="border-b border-gray-200">
-                                    <td class="px-6 py-3">iPhone X</td>
-                                    <td class="px-6 py-3">Tiffany W. Yang</td>
-                                    <td class="px-6 py-3">
-                                        <span class="px-2 py-1 bg-success/10 text-success text-xs rounded">Mobile</span>
-                                    </td>
-                                    <td class="px-6 py-3">
-                                        <div class="flex w-full h-1.5 bg-light rounded-full overflow-hidden">
-                                            <div class="progress-bar progress-bar-striped bg-success" role="progressbar"
-                                                aria-valuenow="85" aria-valuemin="20" aria-valuemax="100" style="width:85%">
+                                @foreach ($beritas as $berita)
+                                    <tr class="border-b border-gray-200">
+                                        <td class="px-6 py-3"><img src="{{ asset('storage/' . $berita->image) }}"
+                                                alt="{{ $berita->title }}" width="35"></td>
+                                        <td class="px-6 py-3">{{ $berita->title }}</td>
+                                        <td class="px-6 py-3">
+                                            <span
+                                                class="px-2 py-1 bg-success/10 text-success text-xs rounded">{{ $berita->kategoriBerita->name }}</span>
+                                        </td>
+
+                                        <td class="px-6 py-3">
+                                            <div class="flex items-center gap-3 justify-center">
+                                                <a href=""
+                                                    class="relative group text-yellow-500 hover:text-yellow-600">
+                                                    <i class="uil uil-file-edit-alt text-lg"></i>
+                                                    <span
+                                                        class="absolute -top-7 left-1/2 -translate-x-1/2 scale-0 group-hover:scale-100 transition-transform bg-gray-800 text-white text-xs rounded-md py-1 px-2">
+                                                        Edit File
+                                                    </span>
+                                                </a>
+                                                <a href=""
+                                                    class="relative group text-red-500 hover:text-red-600">
+                                                    <i class="uil uil-trash-alt text-lg"></i>
+                                                    <span
+                                                        class="absolute -top-7 left-1/2 -translate-x-1/2 scale-0 group-hover:scale-100 transition-transform bg-gray-800 text-white text-xs rounded-md py-1 px-2">
+                                                        Hapus File
+                                                    </span>
+                                                </a>
+
+                                              
+                                                {{-- <form action="{{ route('dashboard.berita.destroy', $berita->slug) }}"
+                                                    method="POST">
+                                                    @csrf
+                                                    @method('DELETE')
+                                                    <button type="submit"
+                                                        class="text-red-500 hover:text-red-600">Delete</button>
+                                                </form> --}}
                                             </div>
-                                        </div>
-                                    </td>
-                                    <td class="px-6 py-3">$ 1200.00</td>
-                                </tr>
-                                <tr class="border-b border-gray-200">
-                                    <td class="px-6 py-3">iPad</td>
-                                    <td class="px-6 py-3">Dale P. Warman</td>
-                                    <td class="px-6 py-3">
-                                        <span class="px-2 py-1 bg-success/10 text-success text-xs rounded">Tablet</span>
-                                    </td>
-                                    <td class="px-6 py-3">
-                                        <div class="flex w-full h-1.5 bg-light rounded-full overflow-hidden">
-                                            <div class="progress-bar progress-bar-striped bg-success" role="progressbar"
-                                                aria-valuenow="72" aria-valuemin="20" aria-valuemax="100" style="width:72%">
-                                            </div>
-                                        </div>
-                                    </td>
-                                    <td class="px-6 py-3">$ 1190.00</td>
-                                </tr>
-                                <tr class="border-b border-gray-200">
-                                    <td class="px-6 py-3">OnePlus</td>
-                                    <td class="px-6 py-3">Garth J. Terry</td>
-                                    <td class="px-6 py-3">
-                                        <span
-                                            class="px-2 py-1 bg-success/10 text-success text-xs rounded">Electronics</span>
-                                    </td>
-                                    <td class="px-6 py-3">
-                                        <div class="flex w-full h-1.5 bg-light rounded-full overflow-hidden">
-                                            <div class="progress-bar progress-bar-striped bg-success" role="progressbar"
-                                                aria-valuenow="43" aria-valuemin="20" aria-valuemax="100" style="width:43%">
-                                            </div>
-                                        </div>
-                                    </td>
-                                    <td class="px-6 py-3">$ 999.00</td>
-                                </tr>
-                                <tr class="border-b border-gray-200">
-                                    <td class="px-6 py-3">ZenPad</td>
-                                    <td class="px-6 py-3">Marilyn D. Bailey</td>
-                                    <td class="px-6 py-3">
-                                        <span class="px-2 py-1 bg-success/10 text-success text-xs rounded">Cosmetics</span>
-                                    </td>
-                                    <td class="px-6 py-3">
-                                        <div class="flex w-full h-1.5 bg-light rounded-full overflow-hidden">
-                                            <div class="progress-bar progress-bar-striped bg-success" role="progressbar"
-                                                aria-valuenow="37" aria-valuemin="20" aria-valuemax="100" style="width:37%">
-                                            </div>
-                                        </div>
-                                    </td>
-                                    <td class="px-6 py-3">$ 1150.00</td>
-                                </tr>
-                                <tr class="border-b border-gray-200">
-                                    <td class="px-6 py-3">Pixel 2</td>
-                                    <td class="px-6 py-3">Denise R. Vaughan</td>
-                                    <td class="px-6 py-3">
-                                        <span class="px-2 py-1 bg-success/10 text-success text-xs rounded">Appliences</span>
-                                    </td>
-                                    <td class="px-6 py-3">
-                                        <div class="flex w-full h-1.5 bg-light rounded-full overflow-hidden">
-                                            <div class="progress-bar progress-bar-striped bg-success" role="progressbar"
-                                                aria-valuenow="82" aria-valuemin="20" aria-valuemax="100" style="width:82%">
-                                            </div>
-                                        </div>
-                                    </td>
-                                    <td class="px-6 py-3">$ 1180.00</td>
-                                </tr>
-                                <tr>
-                                    <td class="px-6 py-3">Pixel 2</td>
-                                    <td class="px-6 py-3">Jeffery R. Wilson</td>
-                                    <td class="px-6 py-3">
-                                        <span class="px-2 py-1 bg-success/10 text-success text-xs rounded">Mobile</span>
-                                    </td>
-                                    <td class="px-6 py-3">
-                                        <div class="flex w-full h-1.5 bg-light rounded-full overflow-hidden">
-                                            <div class="progress-bar progress-bar-striped bg-success" role="progressbar"
-                                                aria-valuenow="36" aria-valuemin="20" aria-valuemax="100" style="width:36%">
-                                            </div>
-                                        </div>
-                                    </td>
-                                    <td class="px-6 py-3">$ 1180.00</td>
-                                </tr>
+                                        </td>
+                                    </tr>
+                                @endforeach
                             </tbody>
                         </table>
                     </div>

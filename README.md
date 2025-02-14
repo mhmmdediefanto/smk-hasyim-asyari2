@@ -16,3 +16,5 @@
 
 
   https://www.youtube.com/watch?v=IEZr1-KszYA
+
+  composer require realrashid/sweet-alert
