@@ -1,7 +1,9 @@
 <?php
 
 use App\Http\Controllers\AuthController;
+use App\Http\Controllers\CheckSlugController;
 use App\Http\Controllers\DashboardBeritaController;
+use App\Http\Controllers\DashboardKategoriBeritaController;
 use App\Http\Controllers\PublicController;
 use Illuminate\Support\Facades\Route;
 
@@ -85,8 +87,17 @@ Route::group(['middleware' => 'auth'], function () {
         Route::get('/berita/edit/{id}', [DashboardBeritaController::class, 'editShow'])->name('dashboard.berita.edit');
         Route::put('/berita/edit/{id}', [DashboardBeritaController::class, 'update'])->name('dashboard.berita.update');
         Route::post('/berita/delete/image', [DashboardBeritaController::class, 'deleteImage'])->name('dashboard.berita.deleteImage');
+
+        // kategori berita
+        Route::get('/kategori-berita', [DashboardKategoriBeritaController::class, 'index'])->name('dashboard.kategori-berita');
+        Route::post('/kategori-berita/store', [DashboardKategoriBeritaController::class, 'store'])->name('dashboard.kategori-berita.store');
+        Route::put('/kategori-berita/edit/{id}', [DashboardKategoriBeritaController::class, 'update'])->name('dashboard.kategori-berita.update');
+        Route::delete('/kategori-berita/delete/{id}', [DashboardKategoriBeritaController::class, 'destroy'])->name('dashboard.kategori-berita.delete');
     });
 });
+
+// route checkslug
+Route::get('/checkSlug', [CheckSlugController::class, 'checkSlug'])->name('checkSlug');
 
 // route 404
 Route::fallback(function () {

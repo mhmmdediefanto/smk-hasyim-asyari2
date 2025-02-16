@@ -19,6 +19,10 @@
     <!-- Head Js -->
     <script src="{{ asset('assets/js/head.js') }}"></script>
 
+    {{-- flowbite  --}}
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/flowbite/1.6.0/flowbite.min.js"></script>
+
+
     <script src="{{ asset('assets/libs/jquery/jquery.min.js') }}"></script>
     {{-- link inport tailwind --}}
     @vite('resources/css/app.css')
