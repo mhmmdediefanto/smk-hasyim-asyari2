@@ -2,56 +2,56 @@
 
 @section('main')
     <div class="w-full">
-            @if (session('success'))
-                <script>
-                    Swal.fire({
-                        icon: 'success',
-                        title: 'Sukses!',
-                        text: "{{ session('success') }}",
-                    });
-                </script>
-            @endif
-            @if (session('error'))
-                <script>
-                    Swal.fire({
-                        icon: 'error',
-                        title: 'Gagal!',
-                        text: "{{ session('error') }}",
-                    });
-                </script>
-            @endif
-            <div class="card overflow-hidden p-5">
-                <div class="card-header flex justify-between items-center">
-                    <h4 class="card-title">Tambah Berita</h4>
-                </div>
-                <div class="card-body mt-5">
-                    <form action="{{ route('dashboard.berita.store') }}" method="POST" enctype="multipart/form-data">
-                        @csrf
-                        <div class="grid grid-cols-1 gap-6 lg:grid-cols-2">
-                            <div>
-                                <label for="title" class="text-gray-800 text-sm font-medium inline-block mb-2">Judul
-                                    Informasi</label>
-                                <input type="text" id="title" name="title" required
-                                    class="form-input @error('title') border-red-500   
+        @if (session('success'))
+            <script>
+                Swal.fire({
+                    icon: 'success',
+                    title: 'Sukses!',
+                    text: "{{ session('success') }}",
+                });
+            </script>
+        @endif
+        @if (session('error'))
+            <script>
+                Swal.fire({
+                    icon: 'error',
+                    title: 'Gagal!',
+                    text: "{{ session('error') }}",
+                });
+            </script>
+        @endif
+        <div class="card overflow-hidden p-5">
+            <div class="card-header flex justify-between items-center">
+                <h4 class="card-title">Tambah Berita</h4>
+            </div>
+            <div class="card-body mt-5">
+                <form action="{{ route('dashboard.berita.update', $berita->id) }}" id="form-edit-berita" method="POST"
+                    enctype="multipart/form-data">
+                    @method('PUT')
+                    @csrf
+                    <div class="grid grid-cols-1 gap-6 lg:grid-cols-2">
+                        <div>
+                            <label for="title" class="text-gray-800 text-sm font-medium inline-block mb-2">Judul
+                                Informasi</label>
+                            <input type="text" id="title" name="title" required value="{{ $berita->title }}"
+                                class="form-input @error('title') border-red-500   
                             @enderror"
-                                    autofocus>
-                                @error('title')
-                                    <p class="text-red-500 text-[12px] font-nunito">{{ $message }}</p>
-                                @enderror
-                            </div>
-                            <div>
-                                <label for="slug"
-                                    class="text-gray-800 text-sm font-medium inline-block mb-2">Slug</label>
-                                <input type="text" id="slug" class="form-input bg-cyan-300" readonly="" required
-                                    name="slug" style="cursor: not-allowed;">
-                            </div>
+                                autofocus>
+                            @error('title')
+                                <p class="text-red-500 text-[12px] font-nunito">{{ $message }}</p>
+                            @enderror
+                        </div>
+                        <div>
+                            <label for="slug" class="text-gray-800 text-sm font-medium inline-block mb-2">Slug</label>
+                            <input type="text" id="slug" class="form-input bg-cyan-300" readonly="" required
+                                name="slug" style="cursor: not-allowed;" value="{{ $berita->slug }}">
+                        </div>
 
-                            <div>
-                                <label for="slug"
-                                    class="text-gray-800 text-sm font-medium inline-block mb-2">Gambar</label>
-                                <label for="image" class="sr-only">Choose file</label>
-                                <input type="file" name="image" id="image"
-                                    class="block w-full border border-gray-200 shadow-sm rounded-md
+                        <div>
+                            <label for="slug" class="text-gray-800 text-sm font-medium inline-block mb-2">Gambar</label>
+                            <label for="image" class="sr-only">Choose file</label>
+                            <input type="file" name="image" id="image"
+                                class="block w-full border border-gray-200 shadow-sm rounded-md
                                 text-sm focus:z-10 focus:border-blue-500 focus:ring-blue-500 
                                 disabled:opacity-50 disabled:pointer-events-none
                                  
@@ -59,43 +59,44 @@
                               file:me-4
                               file:py-2 file:px-4
                               "
-                                    required>
-
-                            </div>
-                            <div>
-                                <label for="kategori_berita_id" class="text-gray-800 text-sm font-medium inline-block mb-2">
-                                    Kategori berita</label>
-                                <select class="form-select" id="kategori_berita_id" name="kategori_berita_id" required>
-                                    <option value="">-- Pilih Kategori --</option>
-                                    @foreach ($kategories as $kategori)
-                                        <option value={{ $kategori->id }}>{{ $kategori->name }}</option>
-                                    @endforeach
-
-                                </select>
-                            </div>
-                        </div>
-
-                        <div class="w-full mt-5 flex mb-5 flex-col">
-                            <label for="snow-editor"
-                                class="text-gray-800 text-sm font-medium inline-block mb-2">Content</label>
+                                required>
 
                         </div>
-                        <textarea id="editor" class="ckeditor" name="body"></textarea>
+                        <div>
+                            <label for="kategori_berita_id" class="text-gray-800 text-sm font-medium inline-block mb-2">
+                                Kategori berita</label>
+                            <select class="form-select" id="kategori_berita_id" name="kategori_berita_id" required>
+                                <option value="">-- Pilih Kategori --</option>
+                                @foreach ($kategories as $kategori)
+                                    <option value={{ $kategori->id }}
+                                        {{ $kategori->id == $berita->kategori_berita_id ? 'selected' : '' }}>
+                                        {{ $kategori->name }}</option>
+                                @endforeach
 
-                        <div class="mt-5">
-                            <button type="submit"
-                                class="py-1 px-2 bg-cyan-500 !text-sm text-white hover:bg-cyan-600 active:bg-cyan-400 cursor-pointer rounded-sm">Simpan</button>
+                            </select>
                         </div>
+                    </div>
 
-                    </form>
-                </div>
+                    <div class="w-full mt-5 flex mb-5 flex-col">
+                        <label for="snow-editor" class="text-gray-800 text-sm font-medium inline-block mb-2">Content</label>
+
+                    </div>
+                    <textarea id="editor" class="ckeditor" name="body">{{ $berita->body }}</textarea>
+
+                    <div class="mt-5">
+                        <button type="submit"
+                            class="py-1 px-2 bg-cyan-500 !text-sm text-white hover:bg-cyan-600 active:bg-cyan-400 cursor-pointer rounded-sm">Simpan</button>
+                    </div>
+
+                </form>
             </div>
+        </div>
     </div>
 @endsection
 
 @push('scripts')
     <script>
-        //halaman create
+        // halaman edit
         ClassicEditor
             .create(document.querySelector('#editor'), {
                 toolbar: {
@@ -106,8 +107,7 @@
                             'imageStyle:center',
                             '|',
                             'resizeImage', // Menyertakan toolbar untuk resize
-                            'imageTextAlternative',
-                            'imageStyle:full',
+                            'imageTextAlternative'
                         ]
                     },
                     table: {

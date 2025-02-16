@@ -13,7 +13,7 @@
             <li class="menu-title">Menu</li>
 
             <li class="menu-item">
-                <a href="{{ route('dashboard') }}" class="menu-link">
+                <a href="{{ route('dashboard') }}" class="menu-link {{ Request::is('dashboard') ? 'active' : '' }} ">
                     <span class="menu-icon"><i class="uil uil-estate"></i></span>
                     <span class="menu-text"> Dashboard </span>
                     <span class="badge bg-primary rounded ms-auto">01</span>
@@ -29,13 +29,15 @@
 
                 <ul id="beritaInformasi" class="sub-menu hidden">
                     <li class="menu-item">
-                        <a href="{{ route('dashboard.berita') }}" class="menu-link">
+                        <a href="{{ route('dashboard.berita') }}"
+                            class="menu-link {{ Request::is('dashboard/berita') ? 'active text-cyan-500' : '' }}">
                             <span class="menu-dot"></span>
                             <span class="menu-text">Berita</span>
                         </a>
                     </li>
                     <li class="menu-item">
-                        <a href="#" class="menu-link">
+                        <a href="{{ route('dashboard.kategori-berita') }}"
+                            class="menu-link {{ Request::is('dashboard/kategori-berita') ? 'active text-cyan-500' : '' }}">
                             <span class="menu-dot"></span>
                             <span class="menu-text">Kategori Berita</span>
                         </a>

@@ -1,13 +1,14 @@
 <?php
 
 use App\Http\Controllers\AuthController;
-use App\Http\Controllers\BeritaController;
+use App\Http\Controllers\CheckSlugController;
 use App\Http\Controllers\DashboardBeritaController;
+use App\Http\Controllers\DashboardKategoriBeritaController;
+use App\Http\Controllers\PublicController;
 use Illuminate\Support\Facades\Route;
 
-Route::get('/', function () {
-    return view('public.index');
-})->name('home');
+Route::get('/', [PublicController::class, 'index'])->name('home');
+Route::get('/berita/{slug}', [PublicController::class, 'show'])->name('berita.show');
 
 // route auth
 Route::get('/login', [AuthController::class, 'login'])->name('login')->middleware('guest');
@@ -77,10 +78,26 @@ Route::group(['middleware' => 'auth'], function () {
 
 
         // berita
-        Route::get('/berita',[DashboardBeritaController::class, 'index'])->name('dashboard.berita');
-        Route::get('/berita/create',[DashboardBeritaController::class, 'create'])->name('dashboard.berita.create');
+        Route::get('/berita', [DashboardBeritaController::class, 'index'])->name('dashboard.berita');
+        Route::get('/berita/create', [DashboardBeritaController::class, 'create'])->name('dashboard.berita.create');
+        Route::post('/berita/store', [DashboardBeritaController::class, 'store'])->name('dashboard.berita.store');
+        Route::post('/berita/upload-image', [DashboardBeritaController::class, 'uploadImage'])->name('dashboard.berita.uploadImage');
+        Route::get('/berita/checkSlug', [DashboardBeritaController::class, 'checkSlug'])->name('dashboard.berita.checkSlug');
+        Route::delete('/berita/delete/{id}', [DashboardBeritaController::class, 'destroy'])->name('dashboard.berita.delete');
+        Route::get('/berita/edit/{id}', [DashboardBeritaController::class, 'editShow'])->name('dashboard.berita.edit');
+        Route::put('/berita/edit/{id}', [DashboardBeritaController::class, 'update'])->name('dashboard.berita.update');
+        Route::post('/berita/delete/image', [DashboardBeritaController::class, 'deleteImage'])->name('dashboard.berita.deleteImage');
+
+        // kategori berita
+        Route::get('/kategori-berita', [DashboardKategoriBeritaController::class, 'index'])->name('dashboard.kategori-berita');
+        Route::post('/kategori-berita/store', [DashboardKategoriBeritaController::class, 'store'])->name('dashboard.kategori-berita.store');
+        Route::put('/kategori-berita/edit/{id}', [DashboardKategoriBeritaController::class, 'update'])->name('dashboard.kategori-berita.update');
+        Route::delete('/kategori-berita/delete/{id}', [DashboardKategoriBeritaController::class, 'destroy'])->name('dashboard.kategori-berita.delete');
     });
 });
+
+// route checkslug
+Route::get('/checkSlug', [CheckSlugController::class, 'checkSlug'])->name('checkSlug');
 
 // route 404
 Route::fallback(function () {

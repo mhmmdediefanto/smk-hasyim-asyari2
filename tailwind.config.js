@@ -16,6 +16,7 @@ export default {
                 poppins: ["Poppins", "sans-serif"],
                 nunito: ["Nunito", "sans-serif"],
                 inter: ["Inter", "sans-serif"],
+                tinos: ["Tinos", "serif"],
             },
         },
     },

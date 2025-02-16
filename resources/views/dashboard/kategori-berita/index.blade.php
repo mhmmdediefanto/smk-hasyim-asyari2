@@ -4,10 +4,21 @@
     <div class="w-full">
         <div class="card overflow-hidden">
             <div class="card-header flex justify-between items-center">
-                <h4 class="card-title font-nunito">Data Berita</h4>
-                <a href="{{ route('dashboard.berita.create') }}"
-                    class=" py-1 px-2 bg-cyan-500 font-nunito !text-sm text-white hover:bg-cyan-600 active:bg-cyan-400 cursor-pointer rounded-sm ">Tambah
-                    Berita</a>
+                <h4 class="card-title font-nunito">Data Kategori Berita</h4>
+                <!-- Modal toggle -->
+                <button data-modal-target="TambahKategori" data-modal-toggle="TambahKategori"
+                    class="block text-white bg-cyan-500 font-nunito
+                     hover:bg-cyan-800 focus:ring-2 focus:outline-none focus:ring-cyan-300 font-medium rounded-lg text-[10px] px-2 py-1 lg:text-[12px]
+                     text-center dark:bg-cyan-600 dark:hover:bg-cyan-700 dark:focus:ring-cyan-800"
+                    type="button">
+                    <i class="uil uil-plus"></i>
+                    Tambah Kategori
+                </button>
+
+                {{-- modal create --}}
+                <x-modal-kategori modalId="TambahKategori" modalTitle="Tambah Kategori Berita"
+                    modalRoute="{{ route('dashboard.kategori-berita.store') }}" modalMethod="POST" id=""
+                    kategori="" methodUpdate="" />
             </div>
             @if (session('success'))
                 <script>
@@ -24,41 +35,40 @@
                         <table class="min-w-full">
                             <thead class="bg-light/40 border-b border-gray-200">
                                 <tr class="capitalize font-nunito">
-                                    <th class="px-6 py-3 text-start">image</th>
                                     <th class="px-6 py-3 text-start">title</th>
-                                    <th class="px-6 py-3 text-start">Category</th>
+                                    <th class="px-6 py-3 text-start">Slug</th>
                                     <th class="px-6 py-3 text-start">action</th>
                                 </tr>
                             </thead>
                             <tbody>
-                                @foreach ($beritas as $berita)
+                                @foreach ($kategories as $kategori)
                                     <tr class="border-b border-gray-200">
-                                        <td class="px-6 py-3"><img src="{{ asset('storage/' . $berita->image) }}"
-                                                alt="{{ $berita->title }}" width="35"></td>
-                                        @php
-                                            // Potong excerpt menjadi 100 karakter
-                                            $excerptTitle = substr($berita->title, 0, 75);
-                                            // Menambahkan "..." jika teks terpotong
-                                            $excerptForTitle = rtrim($excerptTitle, '.') . '...';
-                                        @endphp
-                                        <td class="px-6 py-3">{{ $excerptForTitle }}</td>
-                                        <td class="px-6 py-3">
-                                            <span
-                                                class="px-2 py-1 bg-success/10 text-success text-xs rounded">{{ $berita->kategoriBerita->name }}</span>
-                                        </td>
 
+
+                                        <td class="px-6 py-3">{{ $kategori->name }}</td>
+                                        <td class="px-6 py-3">{{ $kategori->slug }}</td>
                                         <td class="px-6 py-3">
-                                            <div class="flex items-center gap-3 justify-center">
-                                                <a href="{{ route('dashboard.berita.edit', $berita->id) }}"
+                                            <div class="flex items-center gap-3">
+                                                <button data-modal-target="editKategoriBerita{{ $kategori->id }}"
+                                                    data-modal-toggle="editKategoriBerita{{ $kategori->id }}"
                                                     class="relative group text-yellow-500 hover:text-yellow-600">
                                                     <i class="uil uil-file-edit-alt text-lg"></i>
                                                     <span
                                                         class="absolute -top-7 left-1/2 -translate-x-1/2 scale-0 group-hover:scale-100 transition-transform bg-gray-800 text-white text-xs rounded-md py-1 px-2">
                                                         Edit File
                                                     </span>
-                                                </a>
+
+                                                </button>
+
+                                                {{-- modal edit --}}
+                                                <x-modal-kategori modalId="editKategoriBerita"
+                                                    modalTitle="Edit Kategori Berita"
+                                                    modalRoute="{{ route('dashboard.kategori-berita.update', $kategori->id) }}"
+                                                    methodUpdate="PUT" modalMethod="POST" id="{{ $kategori->id }}"
+                                                    :kategori="$kategori" />
+
                                                 <a data-confirm-delete="true"
-                                                    href="{{ route('dashboard.berita.delete', $berita->id) }}"
+                                                    href="{{ route('dashboard.kategori-berita.delete', $kategori->id) }}"
                                                     class="relative group text-red-500 hover:text-red-600">
                                                     <i class="uil uil-trash-alt text-lg"></i>
                                                     <span
