@@ -10,12 +10,14 @@ class PublicController extends Controller
 
     public function index()
     {
-        $beritas = Berita::with('user', 'kategoriBerita')->select('id', 'title', 'slug', 'image', 'user_id', 'excerpt' , 'kategori_berita_id', 'created_at')->latest()->paginate(6);
+        $beritas = Berita::with('user', 'kategoriBerita')->select('id', 'title', 'slug', 'image', 'user_id', 'excerpt', 'kategori_berita_id', 'created_at')->latest()->paginate(6);
         return view('public.index', compact('beritas'));
     }
 
     public function show($slug)
     {
-        return view('public.pages.berita.show');
+
+        $berita = Berita::with('user', 'kategoriBerita')->where('slug', $slug)->firstOrFail();
+        return view('public.pages.show-detail-berita', compact('berita'));
     }
 }

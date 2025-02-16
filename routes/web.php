@@ -6,6 +6,7 @@ use App\Http\Controllers\PublicController;
 use Illuminate\Support\Facades\Route;
 
 Route::get('/', [PublicController::class, 'index'])->name('home');
+Route::get('/berita/{slug}', [PublicController::class, 'show'])->name('berita.show');
 
 // route auth
 Route::get('/login', [AuthController::class, 'login'])->name('login')->middleware('guest');
@@ -80,6 +81,10 @@ Route::group(['middleware' => 'auth'], function () {
         Route::post('/berita/store', [DashboardBeritaController::class, 'store'])->name('dashboard.berita.store');
         Route::post('/berita/upload-image', [DashboardBeritaController::class, 'uploadImage'])->name('dashboard.berita.uploadImage');
         Route::get('/berita/checkSlug', [DashboardBeritaController::class, 'checkSlug'])->name('dashboard.berita.checkSlug');
+        Route::delete('/berita/delete/{id}', [DashboardBeritaController::class, 'destroy'])->name('dashboard.berita.delete');
+        Route::get('/berita/edit/{id}', [DashboardBeritaController::class, 'editShow'])->name('dashboard.berita.edit');
+        Route::put('/berita/edit/{id}', [DashboardBeritaController::class, 'update'])->name('dashboard.berita.update');
+        Route::post('/berita/delete/image', [DashboardBeritaController::class, 'deleteImage'])->name('dashboard.berita.deleteImage');
     });
 });
 

@@ -20,7 +20,6 @@ class DashboardBeritaController extends Controller
     /******  64576a7b-155b-46c8-b819-4307ac4f0bc4  *******/
     public function index()
     {
-
         $beritas = Berita::with('kategoriBerita', 'user')->select('id', 'title', 'image', 'kategori_berita_id')->latest()->get();
         return view('dashboard.berita.index', compact('beritas'));
     }
@@ -113,7 +112,7 @@ class DashboardBeritaController extends Controller
             $file = $request->file('upload');
             $filename = time() . '_' . $file->getClientOriginalName();
             $path = $file->storeAs('uploads', $filename, 'public');
-            
+
 
             $url = Storage::url($path);
 
@@ -124,5 +123,114 @@ class DashboardBeritaController extends Controller
         }
 
         return response()->json(['error' => 'Upload image failed'], 500);
+    }
+
+
+
+    /*************  ✨ Codeium Command ⭐  *************/
+    /**
+     * Handle delete berita
+     *
+     * @param int $id
+     * @return \Illuminate\Http\RedirectResponse
+     */
+    /******  05f1b6cb-1a82-4aea-94a2-c215fe44f35c  *******/
+    public function destroy($id)
+    {
+
+        $berita = Berita::find($id);
+        if ($berita) {
+            // dd($berita->image);
+            Storage::disk('public')->delete($berita->image);
+        }
+
+        // Cari semua gambar dalam konten menggunakan regex
+        preg_match_all('/<img.*?src=["\']([^"\']+)["\']/', $berita->body, $matches);
+
+        // Jika ada gambar di dalam konten, hapus satu per satu
+        if (!empty($matches[1])) {
+            foreach ($matches[1] as $image) {
+                // Ambil path dari URL (misalnya "storage/uploads/ckeditor/image.jpg")
+                $path = str_replace(Storage::url(''), '', $image);
+
+
+                // dd($path);                // Hapus file dari penyimpanan
+                Storage::disk('public')->delete($path);
+            }
+        }
+
+
+
+        $berita->delete();
+        return back()->with('success', 'Berita berhasil dihapus');
+    }
+
+
+
+    public function deleteImage(Request $request)
+    {
+        $filename = $request->filename; // Nama file dari request
+        $filePath = 'uploads/' . $filename; // Pastikan path sesuai dengan lokasi penyimpanan
+
+        if (Storage::disk('public')->exists($filePath)) {
+            Storage::disk('public')->delete($filePath);
+            return response()->json(['message' => 'Gambar berhasil dihapus'], 200);
+        }
+
+        return response()->json(['message' => 'Gambar tidak ditemukan'], 404);
+    }
+
+
+
+    public function editShow($id)
+    {
+        $berita = Berita::find($id);
+        $kategories = KategoriBerita::select('id', 'name')->get();
+        return view('dashboard.berita.edit', compact('berita', 'kategories'));
+    }
+
+    public function update(Request $request, $id)
+    {
+        $berita = Berita::find($id);
+        if (!$berita) {
+            return redirect('/dashboard/berita')->with('error', 'Data Berita Tidak Ditemukan');
+        }
+
+        try {
+            $validaedDataRules = [
+                'title' => 'required|max:255',
+                'kategori_berita_id' => 'required',
+                'image' => 'required|image|mimes:jpeg,png,jpg,gif,svg|max:2048',
+                'body' => 'required',
+            ];
+
+            // cek apakah slug berubah
+            if ($request->slug != $berita->slug) {
+                $validaedDataRules['slug'] = 'required|max:255|unique:beritas';
+            }
+
+            $validatedData = $request->validate($validaedDataRules);
+
+            $validatedData['user_id'] = Auth::user()->id;
+            $validatedData['excerpt'] = substr(strip_tags($request->body), 0, 255);
+
+            // cek apakah ada gambar baru
+            if ($request->image) {
+                // cek apakah ada gambar lama
+                if (!empty($berita->image)) {
+                    // hapus gambar lama
+                    Storage::disk('public')->delete($berita->image);
+                }
+
+                // upload gambar baru
+                $validatedData['image'] = $request->file('image')->store('images/berita', 'public');
+            }
+
+            // update berita
+            $berita->update($validatedData);
+            return redirect('/dashboard/berita')->with('success', 'Berita Berhasil Diupdate');
+        } catch (\Throwable $th) {
+            return back()->with('error', $th->getMessage());
+        }
     }
 }

@@ -8,6 +8,9 @@
     <meta name="csrf-token" content="{{ csrf_token() }}">
 
 
+    <!-- Favicon -->
+    <link rel="icon" href="{{ asset('logo/logo_smk_hasyim_asyari_2_kudus.png') }}" sizes="32x32"
+        type="image/x-icon">
     <!-- App css -->
     <link href="{{ asset('assets/css/theme.min.css') }}" rel="stylesheet" type="text/css">
     <link href="{{ asset('assets/css/icons.min.css') }}" rel="stylesheet" type="text/css">
@@ -41,6 +44,7 @@
             @include('dashboard.partials.topbar')
             {{-- main --}}
             <main class="p-6">
+                <x-breadcrumbs />
                 @yield('main')
             </main>
         </div>
