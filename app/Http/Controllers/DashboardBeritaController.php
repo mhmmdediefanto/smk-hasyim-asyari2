@@ -200,7 +200,6 @@ class DashboardBeritaController extends Controller
             $validaedDataRules = [
                 'title' => 'required|max:255',
                 'kategori_berita_id' => 'required',
-                'image' => 'required|image|mimes:jpeg,png,jpg,gif,svg|max:2048',
                 'body' => 'required',
             ];
 

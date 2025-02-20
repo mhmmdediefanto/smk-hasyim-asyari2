@@ -3,8 +3,8 @@
 @section('content')
     <div class="max-w-[1200px] container my-10 lg:px-16">
         <div class="flex flex-col justify-between lg:flex-row-reverse items-center">
-            <x-breadcrumbs />
-            <h1 class="font-poppins lg:text-lg font-bold text-slate-600 text-md mb-2">{{ $berita->title }}</h1>
+            <x-breadcrumbs  class="font-neutrif"/>
+            <h1 class="font-neutrif lg:text-lg font-bold text-slate-600 text-md mb-2">{{ $berita->title }}</h1>
         </div>
         <div class="grid grid-cols-1 lg:grid-cols-3 gap-4">
             <div class="grid grid-cols-1 lg:col-span-2">

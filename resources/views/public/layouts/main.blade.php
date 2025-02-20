@@ -24,10 +24,11 @@
     <meta property="og:title" content="SMK NU Hasyim Asy'ari 2 Kudus - Sistem Informasi Sekolah">
     <meta property="og:description"
         content="SMK NU Hasyim Asy'ari 2 Kudus menyediakan sistem informasi sekolah berbasis web untuk kemudahan akademik dan administrasi siswa serta guru.">
-    <meta property="og:image" content="{{ asset('logo/logo_smk_hasyim_asyari_2_kudus.png') }}"> <!-- Ganti dengan URL gambar -->
+    <meta property="og:image" content="{{ asset('logo/logo_smk_hasyim_asyari_2_kudus.png') }}">
+    <!-- Ganti dengan URL gambar -->
     <meta property="og:url" content="{{ url()->current() }}">
     <meta property="og:type" content="website">
-    
+
     <!-- Meta Title -->
     <title>SMK NU Hasyim Asy'ari 2 Kudus - Sistem Informasi Sekolah Terintegrasi</title>
 
@@ -37,13 +38,15 @@
     <meta name="twitter:title" content="SMK NU Hasyim Asy'ari 2 Kudus - Sistem Informasi Sekolah">
     <meta name="twitter:description"
         content="Sistem informasi sekolah digital untuk mendukung kegiatan akademik di SMK NU Hasyim Asy'ari 2 Kudus.">
-    <meta name="twitter:image" content="{{ asset('logo/logo_smk_hasyim_asyari_2_kudus.png') }}"> <!-- Ganti dengan URL gambar -->
+    <meta name="twitter:image" content="{{ asset('logo/logo_smk_hasyim_asyari_2_kudus.png') }}">
+    <!-- Ganti dengan URL gambar -->
 
     <!-- Canonical URL -->
     <link rel="canonical" href="https://www.example.com"> <!-- Ganti dengan URL website -->
 
     <!-- Favicon -->
-    <link rel="icon" href="{{ asset('logo/logo_smk_hasyim_asyari_2_kudus.png') }}" sizes="32x32" type="image/x-icon">
+    <link rel="icon" href="{{ asset('logo/logo_smk_hasyim_asyari_2_kudus.png') }}" sizes="32x32"
+        type="image/x-icon">
     <!-- Ganti dengan URL favicon -->
 
     <!-- Schema Markup JSON-LD -->
@@ -83,8 +86,9 @@
         href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Raleway:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap"
         rel="stylesheet">
 
-        <link href="{{ asset('assets/@iconscout/unicons/css/line.css') }}" type="text/css" rel="stylesheet">
-        <link href="{{ asset('assets/css/icons.min.css') }}" rel="stylesheet" type="text/css">
+    <link href="{{ asset('assets/@iconscout/unicons/css/line.css') }}" type="text/css" rel="stylesheet">
+    <link href="{{ asset('assets/css/icons.min.css') }}" rel="stylesheet" type="text/css">
+
     {{-- bootstrap CDN --}}
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet"
         integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
@@ -100,6 +104,7 @@
 
     <!-- Main CSS File -->
     <link href="{{ asset('assets/css/main.css') }}" rel="stylesheet">
+
 
     {{-- link inport tailwind --}}
     @vite('resources/css/app.css')
@@ -123,7 +128,13 @@
 
     <div class="content">
         @yield('content')
+        <!-- Scroll Top -->
     </div>
+    <a href="#" id="scroll-top" class="scroll-top d-flex align-items-center justify-content-center"><i
+            class="bi bi-arrow-up-short"></i></a>
+
+    <!-- Preloader -->
+    <div id="preloader"></div>
 
 
 
@@ -134,12 +145,6 @@
     <!-- End Footer -->
 
 
-    <!-- Scroll Top -->
-    <a href="#" id="scroll-top" class="scroll-top d-flex align-items-center justify-content-center"><i
-            class="bi bi-arrow-up-short"></i></a>
-
-    <!-- Preloader -->
-    <div id="preloader"></div>
 
     <!-- Vendor JS Files -->
     <script src="{{ asset('assets/vendor/bootstrap/js/bootstrap.bundle.min.js') }}"></script>
@@ -152,6 +157,7 @@
     <!-- Main JS File -->
     <script src="{{ asset('assets/js/main.js') }}"></script>
 
+    @vite('resources/js/app.js')
 
     {{-- bootstrap CDN  --}}
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"

@@ -47,7 +47,7 @@
                             </div>
 
                             <div>
-                                <label for="slug"
+                                <label for="image"
                                     class="text-gray-800 text-sm font-medium inline-block mb-2">Gambar</label>
                                 <label for="image" class="sr-only">Choose file</label>
                                 <input type="file" name="image" id="image"

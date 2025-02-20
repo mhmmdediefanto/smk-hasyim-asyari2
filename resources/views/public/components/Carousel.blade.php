@@ -1,7 +1,39 @@
-@extends('public.layouts.main')
+<div class="relative  w-full overflow-hidden">
+    <div class="flex flex-nowrap transition-transform duration-500 ease-in-out" id="carousel">
+        <div class="min-w-full relative"><img src="{{ asset('assets/img/ppdb1.jpeg') }}"
+                class="w-full lg:h-[88vh] object-cover">
+            <div
+                class="absolute inset-0 flex flex-col items-center justify-center text-white text-center bg-black bg-opacity-50">
+                <h1 class="text-3xl font-bold ">Judul Slide 1</h1>
+                <p class="text-lg">Tagline untuk slide pertama</p>
+            </div>
+        </div>
+        <div class="min-w-full relative"><img src="{{ asset('assets/img/ppdb2.jpeg') }}"
+                class="w-full lg:h-[88vh] object-cover">
+            <div
+                class="absolute inset-0 flex flex-col items-center justify-center text-white text-center bg-black bg-opacity-50">
+                <h1 class="text-3xl font-bold">Judul Slide 1</h1>
+                <p class="text-lg">Tagline untuk slide pertama</p>
+            </div>
+        </div>
+        <div class="min-w-full relative"><img src="{{ asset('assets/img/ppdb2.jpeg') }}"
+                class="w-full lg:h-[88vh] object-cover">
+            <div
+                class="absolute inset-0 flex flex-col items-center justify-center text-white text-center bg-black bg-opacity-50">
+                <h1 class="text-3xl font-bold">Judul Slide 1</h1>
+                <p class="text-lg">Tagline untuk slide pertama</p>
+            </div>
+        </div>
+    </div>
 
-@section('main')
-<div
+    <!-- Tombol Navigasi -->
+    <button onclick="prevSlide()"
+        class="absolute left-2 top-1/2 transform -translate-y-1/2 bg-gray-800 text-white p-2 rounded-full">&#10094;</button>
+    <button onclick="nextSlide()"
+        class="absolute right-2 top-1/2 transform -translate-y-1/2 bg-gray-800 text-white p-2 rounded-full">&#10095;</button>
+</div>
+
+{{-- <div
   id="carouselExampleCaptions"
   class="relative"
   data-twe-carousel-init
@@ -139,8 +171,8 @@
       >Next</span
     >
   </button>
-</div>
-    {{-- <section id="hero" class="hero section ">
+</div> --}}
+{{-- <section id="hero" class="hero section ">
         <div id="hero-carousel" class="carousel slide carousel-fade" data-bs-ride="carousel" data-bs-interval="5000">
             <div class="carousel-item active">
                 <img src="assets/img/hero-carousel/hero-carousel-1.jpg" alt="..."
@@ -190,4 +222,28 @@
 
         </div>
     </section> --}}
-@endsection
+<script>
+    let currentIndex = 0;
+    const slides = document.querySelectorAll("#carousel > div");
+    const totalSlides = slides.length;
+
+    function updateCarousel() {
+        document.getElementById("carousel").style.transform = `translateX(-${currentIndex * 100}%) `;
+    }
+
+    function nextSlide() {
+        currentIndex = (currentIndex + 1) % totalSlides;
+        updateCarousel();
+    }
+
+    function prevSlide() {
+        currentIndex = (currentIndex - 1 + totalSlides) % totalSlides;
+        updateCarousel();
+    }
+
+    function autoSlide() {
+        nextSlide();
+    }
+
+    setInterval(autoSlide, 3000); // Ganti slide setiap 3 detik
+</script>

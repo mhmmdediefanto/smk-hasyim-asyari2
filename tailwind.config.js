@@ -17,6 +17,7 @@ export default {
                 nunito: ["Nunito", "sans-serif"],
                 inter: ["Inter", "sans-serif"],
                 tinos: ["Tinos", "serif"],
+                neutrif: ["Neutrif Pro", "sans-serif"],
             },
         },
     },
