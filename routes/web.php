@@ -4,8 +4,11 @@ use App\Http\Controllers\AuthController;
 use App\Http\Controllers\CheckSlugController;
 use App\Http\Controllers\DashboardBeritaController;
 use App\Http\Controllers\DashboardKategoriBeritaController;
+use App\Http\Controllers\DashbordCarouselManagementController;
 use App\Http\Controllers\PublicController;
 use Illuminate\Support\Facades\Route;
+
+use function PHPUnit\Framework\returnSelf;
 
 Route::get('/', [PublicController::class, 'index'])->name('home');
 Route::get('/berita/{slug}', [PublicController::class, 'show'])->name('berita.show');
@@ -19,14 +22,14 @@ Route::get('/register', function () {
     return view('auth.register');
 })->name('register');
 
-Route::get('sejarah-sekolah', function () {
-    return view('public.pages.sejarah-sekolah');
-})->name('sejarah-sekolah');
 
 
 // Profile
 Route::prefix('profile')->group(function () {
-    Route::get('/visi-misi', fn() => redirect()->route('maintenance'))->name('visi-misi');
+    Route::get('/sejarah-sekolah', function () {
+        return view('public.pages.sejarah-sekolah');
+    })->name('sejarah-sekolah');
+    Route::get('/visi-misi', fn() => view('public.pages.visi-misi'))->name('visi-misi');
     Route::get('/kepala-sekolah', fn() => redirect()->route('maintenance'))->name('kepala-sekolah');
     Route::get('/wakil-kepala-sekolah', fn() => redirect()->route('maintenance'))->name('wakil-kepala-sekolah');
     Route::get('/kepala-tata-usaha', fn() => redirect()->route('maintenance'))->name('kepala-tata-usaha');
@@ -65,7 +68,7 @@ Route::prefix('sarana-prasarana')->group(function () {
 
 // Portal Skahada
 Route::prefix('portal')->group(function () {
-    Route::get('/ppdb', fn() => redirect()->route('maintenance'))->name('ppdb');
+    Route::get('/ppdb', fn() => view('public.pages.ppdb.index'))->name('ppdb');
     Route::get('/absensi-pkl', fn() => redirect()->route('maintenance'))->name('absensi-pkl');
 });
 
@@ -93,6 +96,11 @@ Route::group(['middleware' => 'auth'], function () {
         Route::post('/kategori-berita/store', [DashboardKategoriBeritaController::class, 'store'])->name('dashboard.kategori-berita.store');
         Route::put('/kategori-berita/edit/{id}', [DashboardKategoriBeritaController::class, 'update'])->name('dashboard.kategori-berita.update');
         Route::delete('/kategori-berita/delete/{id}', [DashboardKategoriBeritaController::class, 'destroy'])->name('dashboard.kategori-berita.delete');
+
+        // carousel management
+        Route::get('/carousel-management', [DashbordCarouselManagementController::class, 'index'])->name('dashboard.carousel-management');
+        Route::post('/carousel-management/store', [DashbordCarouselManagementController::class, 'store'])->name('dashboard.carousel-management.store');
+        Route::delete('dashboard/berita/delete/{id}', [DashbordCarouselManagementController::class, 'destroy'])->name('dashboard.carousel-management.delete');
     });
 });
 

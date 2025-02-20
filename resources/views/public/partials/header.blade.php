@@ -1,85 +1,121 @@
 <div class="branding d-flex align-items-center px-3">
     <div class="max-w-[1200px] position-relative flex items-center justify-between w-full mx-auto">
         <a href="{{ route('home') }}" class="logo d-flex align-items-center me-auto">
-            <img src="{{ asset('assets/img/logo.png') }}" alt="">
+            <img src="{{ asset('logo/logotagline.png') }}" alt="" class="w-52">
         </a>
 
         <nav id="navmenu" class="navmenu justify-end">
             <ul>
-                <li><a href="{{ route('home') }}" class="active">Home</a></li>
+                <li><a href="{{ route('home') }}" class=""><span
+                            class="font-neutrif text-slate-900 {{ Route::is('home') ? 'active' : '' }} ">Home</span></a>
+                </li>
 
                 {{-- Profile --}}
                 <li class="dropdown">
-                    <a href="#"><span>Profile</span> <i class="bi bi-chevron-down toggle-dropdown"></i></a>
+                    <a href="#"><span
+                            class="font-neutrif text-slate-900 {{ Route::is('sejarah-sekolah', 'visi-misi', 'kepala-sekolah', 'wakil-kepala-sekolah', 'kepala-tata-usaha', 'guru', 'tenaga-kependidikan', 'data-peserta-didik') ? 'active' : '' }}">Profile</span>
+                        <i class="bi bi-chevron-down toggle-dropdown"></i></a>
                     <ul>
                         <li class="dropdown">
-                            <a href="#"><span>Tentang Sekolah</span> <i
+                            <a href="#"><span class="font-neutrif text-slate-950">Tentang Sekolah</span> <i
                                     class="bi bi-chevron-down toggle-dropdown"></i></a>
                             <ul>
-                                <li><a href="{{ route('sejarah-sekolah') }}">Sejarah Sekolah</a></li>
-                                <li><a href="{{ route('visi-misi') }}">Visi dan Misi</a></li>
+                                <li><a href="{{ route('sejarah-sekolah') }}"><span
+                                            class="font-neutrif text-slate-950">Sejarah
+                                            Sekolah</span></a></li>
+                                <li><a href="{{ route('visi-misi') }}"><span class="font-neutrif text-slate-950">Visi
+                                            dan
+                                            Misi</span></a></li>
                             </ul>
                         </li>
-                        <li class="dropdown">
-                            <a href="#"><span>Civitas Akademik</span> <i
+                        <li class="dropdown font-neutrif">
+                            <a href="#"><span class="font-neutrif text-slate-950">Civitas Akademik</span> <i
                                     class="bi bi-chevron-down toggle-dropdown"></i></a>
                             <ul>
-                                <li><a href="{{ route('kepala-sekolah') }}">Kepala Sekolah</a></li>
-                                <li><a href="{{ route('wakil-kepala-sekolah') }}">Wakil Kepala Sekolah</a></li>
-                                <li><a href="{{ route('kepala-tata-usaha') }}">Kepala Tata Usaha</a></li>
-                                <li><a href="{{ route('guru') }}">Guru</a></li>
-                                <li><a href="{{ route('tenaga-kependidikan') }}">Tenaga Kependidikan</a></li>
-                                <li><a href="{{ route('data-peserta-didik') }}">Data Peserta Didik</a></li>
+                                <li><a href="{{ route('kepala-sekolah') }}"><span
+                                            class="font-neutrif text-slate-950">Kepala
+                                            Sekolah</span></a></li>
+                                <li><a href="{{ route('wakil-kepala-sekolah') }}"><span
+                                            class="font-neutrif text-slate-950">Wakil Kepala Sekolah</span></a></li>
+                                <li><a href="{{ route('kepala-tata-usaha') }}"><span
+                                            class="font-neutrif text-slate-950">Kepala Tata Usaha</span></a></li>
+                                <li><a href="{{ route('guru') }}"><span
+                                            class="font-neutrif text-slate-950">Guru</span></a></li>
+                                <li><a href="{{ route('tenaga-kependidikan') }}"><span
+                                            class="font-neutrif text-slate-950">Tenaga Kependidikan</span></a></li>
+                                <li><a href="{{ route('data-peserta-didik') }}"><span
+                                            class="font-neutrif text-slate-950">Data Peserta Didik</span></a></li>
                             </ul>
                         </li>
                     </ul>
                 </li>
 
                 {{-- Kejuruan --}}
-                <li class="dropdown">
-                    <a href="#"><span>Kejuruan</span> <i class="bi bi-chevron-down toggle-dropdown"></i></a>
+                <li class="dropdown ">
+                    <a href="#"><span class="font-neutrif text-slate-950">Kejuruan</span> <i
+                            class="bi bi-chevron-down toggle-dropdown"></i></a>
                     <ul>
-                        <li><a href="{{ route('busana-fashion') }}">Busana Fashion</a></li>
-                        <li><a href="{{ route('tjkt') }}">Teknik Jaringan Komputer dan Telekomunikasi</a></li>
+                        <li><a href="{{ route('busana-fashion') }}"><span class="font-neutrif text-slate-950">Busana
+                                    Fashion</span></a></li>
+                        <li><a href="{{ route('tjkt') }}"><span class="font-neutrif text-slate-950">Teknik Jaringan
+                                    Komputer
+                                    dan Telekomunikasi</span></a></li>
                     </ul>
                 </li>
 
                 {{-- Ekstra Kulikuler --}}
                 <li class="dropdown">
-                    <a href="#"><span>Ekstra Kulikuler</span> <i
+                    <a href="#"><span class="font-neutrif text-slate-950">Ekstra Kulikuler</span> <i
                             class="bi bi-chevron-down toggle-dropdown"></i></a>
                     <ul>
-                        <li><a href="{{ route('pramuka') }}">Pramuka</a></li>
-                        <li><a href="{{ route('bola-volly') }}">Bola Volly</a></li>
-                        <li><a href="{{ route('pmr') }}">PMR</a></li>
-                        <li><a href="{{ route('rebana-qiroah') }}">Rebana Qiroah</a></li>
-                        <li><a href="{{ route('futsal') }}">Futsal</a></li>
-                        <li><a href="{{ route('bulu-tangkis') }}">Bulu Tangkis</a></li>
+                        <li><a href="{{ route('pramuka') }}"><span
+                                    class="font-neutrif text-slate-950">Pramuka</span></a></li>
+                        <li><a href="{{ route('bola-volly') }}"><span class="font-neutrif text-slate-950">Bola
+                                    Volly</span></a></li>
+                        <li><a href="{{ route('pmr') }}"><span class="font-neutrif text-slate-950">PMR</span></a></li>
+                        <li><a href="{{ route('rebana-qiroah') }}"><span class="font-neutrif text-slate-950">Rebana
+                                    Qiroah</span></a></li>
+                        <li><a href="{{ route('futsal') }}"><span class="font-neutrif text-slate-950">Futsal</span></a>
+                        </li>
+                        <li><a href="{{ route('bulu-tangkis') }}"><span class="font-neutrif text-slate-950">Bulu
+                                    Tangkis</span></a>
+                        </li>
                     </ul>
                 </li>
 
                 {{-- Sarana dan Prasarana --}}
                 <li class="dropdown">
-                    <a href="#"><span>Sarana dan Prasarana</span> <i
+                    <a href="#"><span class="font-neutrif text-slate-950">Sarana dan Prasarana</span> <i
                             class="bi bi-chevron-down toggle-dropdown"></i></a>
                     <ul>
-                        <li><a href="{{ route('ruang-kelas') }}">Ruang Kelas</a></li>
-                        <li><a href="{{ route('lab-busana') }}">Laboratorium Busana</a></li>
-                        <li><a href="{{ route('lab-tjkt') }}">Laboratorium TJKT</a></li>
-                        <li><a href="{{ route('perpustakaan') }}">Perpustakaan</a></li>
-                        <li><a href="{{ route('musholla') }}">Musholla</a></li>
-                        <li><a href="{{ route('ruang-kesenian') }}">Ruang Kesenian</a></li>
-                        <li><a href="{{ route('ruang-guru') }}">Ruang Guru</a></li>
-                        <li><a href="{{ route('kantor-tu') }}">Kantor TU</a></li>
+                        <li><a href="{{ route('ruang-kelas') }}"><span class="font-neutrif text-slate-950">Ruang
+                                    Kelas</span></a></li>
+                        <li><a href="{{ route('lab-busana') }}"><span class="font-neutrif text-slate-950">Laboratorium
+                                    Busana</span></a></li>
+                        <li><a href="{{ route('lab-tjkt') }}"><span class="font-neutrif text-slate-950">Laboratorium
+                                    TJKT</span></a></li>
+                        <li><a href="{{ route('perpustakaan') }}"><span
+                                    class="font-neutrif text-slate-950">Perpustakaan</span></a></li>
+                        <li><a href="{{ route('musholla') }}"><span
+                                    class="font-neutrif text-slate-950">Musholla</span></a></li>
+                        <li><a href="{{ route('ruang-kesenian') }}"><span class="font-neutrif text-slate-950">Ruang
+                                    Kesenian</span></a></li>
+                        <li><a href="{{ route('ruang-guru') }}"><span class="font-neutrif text-slate-950">Ruang
+                                    Guru</span></a></li>
+                        <li><a href="{{ route('kantor-tu') }}"><span class="font-neutrif text-slate-950">Kantor
+                                    TU</span></a></li>
                     </ul>
                 </li>
 
                 {{-- Portal --}}
                 <li class="dropdown">
-                    <a href="#"><span>Portal Skahada</span> <i class="bi bi-chevron-down toggle-dropdown"></i></a>
+                    <a href="#"><span class="font-neutrif text-slate-950">Portal Skahada</span> <i
+                            class="bi bi-chevron-down toggle-dropdown"></i></a>
                     <ul>
-                        <li><a href="{{ route('ppdb') }}">PPDB</a></li>
-                        <li><a href="{{ route('absensi-pkl') }}">Absensi PKL</a></li>
+                        <li><a href="{{ route('ppdb') }}"><span class="font-neutrif text-slate-950">PPDB</span></a>
+                        </li>
+                        <li><a href="{{ route('absensi-pkl') }}"><span class="font-neutrif text-slate-950">Absensi
+                                    PKL</span></a></li>
                     </ul>
                 </li>
             </ul>

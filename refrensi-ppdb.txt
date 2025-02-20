@@ -1,0 +1,40 @@
+1. Hero Section (Banner Utama)
+Gambar atau video sekolah yang menarik.
+Judul utama seperti "Selamat Datang di PPDB [Nama Sekolah] Tahun Ajaran 202X/202X".
+Subjudul singkat yang menjelaskan keunggulan sekolah.
+Tombol CTA (Call to Action) seperti “Daftar Sekarang” atau “Pelajari Lebih Lanjut.”
+2. Informasi Singkat PPDB
+Jadwal Pendaftaran (dibagi menjadi beberapa tahap jika ada, misalnya: pendaftaran, seleksi, pengumuman).
+Persyaratan Pendaftaran (dokumen yang dibutuhkan, syarat umur, dll.).
+Jalur Pendaftaran (reguler, prestasi, afirmasi, dll.).
+Biaya Pendaftaran (jika ada).
+3. Keunggulan Sekolah
+Akreditasi & Prestasi (misalnya: Akreditasi A, Juara Olimpiade Sains).
+Fasilitas Sekolah (misalnya: laboratorium, perpustakaan, lapangan olahraga, asrama).
+Ekstrakurikuler (misalnya: Pramuka, Paskibra, Robotik, English Club).
+Alumni Berprestasi (testimoni dari alumni yang sukses).
+4. Alur Pendaftaran Online
+Grafik atau step-by-step proses pendaftaran, misalnya:
+Isi Formulir Online
+Upload Dokumen
+Verifikasi Berkas
+Tes Seleksi (jika ada)
+Pengumuman Hasil
+5. Testimoni Siswa & Orang Tua
+Kutipan singkat dari siswa/orang tua yang puas dengan sekolah.
+Foto siswa/orang tua agar lebih kredibel.
+6. FAQ (Pertanyaan yang Sering Diajukan)
+Berisi jawaban untuk pertanyaan umum seperti:
+“Bagaimana cara mendaftar?”
+“Apa saja jalur penerimaan yang tersedia?”
+“Bagaimana cara menghubungi panitia PPDB?”
+7. Kontak & Lokasi Sekolah
+Alamat lengkap & Google Maps embed.
+Nomor WhatsApp & Email PPDB.
+Link ke sosial media sekolah (Instagram, Facebook, dll.).
+8. Tombol Aksi di Setiap Bagian
+“Daftar Sekarang” di beberapa bagian agar memudahkan pendaftaran.
+“Hubungi Kami” jika ada pertanyaan.
+Kalau ingin lebih interaktif, bisa ditambahkan: ✅ Live Chat WhatsApp untuk konsultasi.
+✅ Video Profil Sekolah di hero section.
+✅ Animasi ringan dengan Tailwind & AOS (Animate On Scroll) biar lebih menarik

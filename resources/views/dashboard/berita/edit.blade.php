@@ -47,6 +47,8 @@
                                 name="slug" style="cursor: not-allowed;" value="{{ $berita->slug }}">
                         </div>
 
+                        <input type="text" name="old_image" value="{{ $berita->image }}" hidden id="old_image">
+
                         <div>
                             <label for="slug" class="text-gray-800 text-sm font-medium inline-block mb-2">Gambar</label>
                             <label for="image" class="sr-only">Choose file</label>
@@ -58,8 +60,7 @@
                               file:bg-gray-50 file:border-0
                               file:me-4
                               file:py-2 file:px-4
-                              "
-                                required>
+                              ">
 
                         </div>
                         <div>

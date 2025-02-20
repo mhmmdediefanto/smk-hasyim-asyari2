@@ -1,12 +1,17 @@
 @extends('public.layouts.main')
 
-@section( 'content')
+
+@section('main')
     <!-- Hero Section -->
     @include('public.components.Carousel')
     <!-- /Hero Section -->
-
+@endsection
+@section('content')
     <!-- Berita Section -->
     @include('public.components.Berita')
     <!-- /Berita Section -->
-@endsection
 
+    {{--    <!-- Maps Section --}}
+    @include('public.components.map-location')
+    <!-- /Maps Section -->
+@endsection

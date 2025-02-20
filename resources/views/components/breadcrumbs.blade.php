@@ -2,7 +2,7 @@
     {{-- @if (request()->is('dashboard*') || request()->is('dashboard/*'))
         <a href="{{ url('/dashboard') }}" class="text-teal-600 hover:underline">Dashboard</a>
     @else --}}
-        <a href="{{ url('/') }}" class="text-teal-600 hover:underline">Home</a>
+        <a href="{{ url('/') }}" class="text-teal-600 hover:underline"><span class="font-neutrif">Home</span></a>
     {{-- @endif --}}
 
 
@@ -12,7 +12,7 @@
             <span class="text-gray-700">{{ $breadcrumb['label'] }}</span>
         @else
             <a href="{{ $breadcrumb['url'] }}" class="text-teal-600 hover:underline">
-                {{ $breadcrumb['label'] }}
+                <span class="font-neutrif">{{ $breadcrumb['label'] }}</span>
             </a>
         @endif
     @endforeach

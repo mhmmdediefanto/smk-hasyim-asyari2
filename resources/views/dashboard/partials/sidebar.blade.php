@@ -3,8 +3,8 @@
 
     <!-- Brand Logo -->
     <a href="index.html" class="logo-box">
-        <img src="assets/images/logo-light.png" class="logo-light h-6" alt="Light logo">
-        <img src="assets/images/logo-dark.png" class="logo-dark h-6" alt="Dark logo">
+        <img src="{{ asset('logo/logotagline.png') }}" class="logo-light h-6" alt="Smk Nu Hasyim Asy'ari 2 Kudus">
+        <img src="{{ asset('logo/logotagline.png') }}" class="logo-dark h-6" alt="Smk Nu Hasyim Asy'ari 2 Kudus">
     </a>
 
     <!--- Menu -->
@@ -21,7 +21,8 @@
             </li>
 
             <li class="menu-item">
-                <a href="javascript:void(0)" data-hs-collapse="#beritaInformasi" class="menu-link">
+                <a href="javascript:void(0)" data-hs-collapse="#beritaInformasi"
+                    class="menu-link {{ Request::is('dashboard/berita*') ? 'active' : '' }}">
                     <span class="menu-icon"><i class="uil uil-file-plus"></i></span>
                     <span class="menu-text"> Berita - Informasi </span>
                     <span class="menu-arrow"></span>
@@ -44,17 +45,19 @@
                     </li>
                 </ul>
             </li>
+            <li class="menu-title">Content</li>
 
             <li class="menu-item">
-                <a href="chat.html" class="menu-link">
-                    <span class="menu-icon"><i class="uil uil-hipchat"></i></span>
-                    <span class="menu-text"> Berita - Informasi </span>
+                <a href="{{ route('dashboard.carousel-management') }}"
+                    class="menu-link {{ Request::is('dashboard/carousel-management') ? 'active' : '' }}">
+                    <span class="menu-icon"><i class="uil uil-coronavirus"></i></span>
+                    <span class="menu-text"> Carousel </span>
                 </a>
             </li>
 
-            <li class="menu-title">Custom</li>
+            <li class="menu-title">Akademik</li>
 
-            <li class="menu-item">
+            {{-- <li class="menu-item">
                 <a href="javascript:void(0)" data-hs-collapse="#sidenavExtraPages" class="menu-link">
                     <span class="menu-icon"><i class="uil uil-file-plus"></i></span>
                     <span class="menu-text"> Extra Pages </span>
@@ -252,7 +255,7 @@
                         </a>
                     </li>
                 </ul>
-            </li>
+            </li> --}}
 
             <li class="menu-item">
                 <form action="{{ route('logout') }}" method="post">
