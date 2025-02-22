@@ -23,6 +23,8 @@
                     'modalRoute' => route('dashboard.carousel-management.store'),
                     'modalTitle' => 'Tambah Carousel',
                     'methodUpdate' => '',
+                    'carousel' => '',
+                    'onChange' => 'priviewImage()',
                 ])
             </div>
             @if (session('success'))
@@ -57,8 +59,8 @@
                                         <td class="px-6 py-3">{{ $carousel->tagline }}</td>
                                         <td class="px-6 py-3">
                                             <div class="flex items-center gap-3">
-                                                <button data-modal-target="editCarousel}"
-                                                    data-modal-toggle="editCarousel}"
+                                                <button data-modal-target="editCarousel{{ $carousel->id }}"
+                                                    data-modal-toggle="editCarousel{{ $carousel->id }}"
                                                     class="relative group text-yellow-500 hover:text-yellow-600">
                                                     <i class="uil uil-file-edit-alt text-lg"></i>
                                                     <span
@@ -68,14 +70,18 @@
 
                                                 </button>
 
-                                                {{-- modal create --}}
-                                                @include('public.components.modal.modal-carousel', [
-                                                    'modalId' => 'editCarousel{{ $carousel->id }}',
-                                                    'id' => "{{ $carousel->id }}",
+                                                {{-- modal edit --}}
+                                                @include('public.components.modal.modal-edit-carousel', [
+                                                    'modalId' => 'editCarousel' . $carousel->id,
+                                                    'id' => $carousel->id,
                                                     'modalMethod' => 'POST',
-                                                    'modalRoute' => route('dashboard.carousel-management.store'),
-                                                    'modalTitle' => 'Tambah Carousel',
+                                                    'modalRoute' => route(
+                                                        'dashboard.carousel-management.update',
+                                                        $carousel->id),
+                                                    'modalTitle' => 'Edit Carousel',
                                                     'methodUpdate' => 'PUT',
+                                                    'carousel' => $carousel,
+                                                    'onChange' => 'priviewUpdateImage()',
                                                 ])
 
                                                 <a data-confirm-delete="true"
@@ -87,12 +93,6 @@
                                                         Hapus File
                                                     </span>
                                                 </a>
-                                                @php
-                                                    $title = 'Delete Carousel';
-                                                    $text = 'Are you sure you want to delete?';
-                                                    confirmDelete($title, $text);
-
-                                                @endphp
                                             </div>
                                         </td>
                                     </tr>

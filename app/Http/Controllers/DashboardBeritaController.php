@@ -55,7 +55,7 @@ class DashboardBeritaController extends Controller
                 'title' => 'required|max:255',
                 'slug' => 'required|max:255|unique:beritas',
                 'kategori_berita_id' => 'required',
-                'image' => 'required|image|mimes:jpeg,png,jpg,gif,svg|max:2048',
+                'image' => 'required|image|mimes:jpeg,png,jpg,gif,svg,webp|max:2048',
                 'body' => 'required',
             ]);
 
