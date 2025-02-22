@@ -100,7 +100,8 @@ Route::group(['middleware' => 'auth'], function () {
         // carousel management
         Route::get('/carousel-management', [DashbordCarouselManagementController::class, 'index'])->name('dashboard.carousel-management');
         Route::post('/carousel-management/store', [DashbordCarouselManagementController::class, 'store'])->name('dashboard.carousel-management.store');
-        Route::delete('dashboard/berita/delete/{id}', [DashbordCarouselManagementController::class, 'destroy'])->name('dashboard.carousel-management.delete');
+        Route::delete('/carousel-management/delete/{id}', [DashbordCarouselManagementController::class, 'destroy'])->name('dashboard.carousel-management.delete');
+        Route::put('/carousel-management/edit/{id}', [DashbordCarouselManagementController::class, 'update'])->name('dashboard.carousel-management.update');
     });
 });
 

@@ -1,29 +1,15 @@
 <div class="relative  w-full overflow-hidden">
+
     <div class="flex flex-nowrap transition-transform duration-500 ease-in-out" id="carousel">
-        <div class="min-w-full relative"><img src="{{ asset('assets/img/ppdb1.jpeg') }}"
-                class="w-full lg:h-[88vh] object-cover">
-            <div
-                class="absolute inset-0 flex flex-col items-center justify-center text-white text-center bg-black bg-opacity-50">
-                <h1 class="text-3xl font-bold ">Judul Slide 1</h1>
-                <p class="text-lg">Tagline untuk slide pertama</p>
+        @foreach ($carousels as $carousel)
+            <div class="min-w-full relative"><img src="{{ asset('storage/' . $carousel->image) }}"
+                    class="w-full lg:h-[88vh]" >
+                <div class="absolute inset-0 flex flex-col items-center justify-center text-white text-center">
+                    <h1 class="text-3xl font-bold ">Judul Slide 1</h1>
+                    <p class="text-lg">Tagline untuk slide pertama</p>
+                </div>
             </div>
-        </div>
-        <div class="min-w-full relative"><img src="{{ asset('assets/img/ppdb2.jpeg') }}"
-                class="w-full lg:h-[88vh] object-cover">
-            <div
-                class="absolute inset-0 flex flex-col items-center justify-center text-white text-center bg-black bg-opacity-50">
-                <h1 class="text-3xl font-bold">Judul Slide 1</h1>
-                <p class="text-lg">Tagline untuk slide pertama</p>
-            </div>
-        </div>
-        <div class="min-w-full relative"><img src="{{ asset('assets/img/ppdb2.jpeg') }}"
-                class="w-full lg:h-[88vh] object-cover">
-            <div
-                class="absolute inset-0 flex flex-col items-center justify-center text-white text-center bg-black bg-opacity-50">
-                <h1 class="text-3xl font-bold">Judul Slide 1</h1>
-                <p class="text-lg">Tagline untuk slide pertama</p>
-            </div>
-        </div>
+        @endforeach
     </div>
 
     <!-- Tombol Navigasi -->

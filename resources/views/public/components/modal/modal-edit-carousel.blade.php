@@ -30,19 +30,19 @@
                     @csrf
 
                     <!-- Tempat Preview Gambar -->
-                    <img src="" alt="Preview Gambar" id="img-priview"
+                    <img src="" alt="Preview Gambar" id="img-priview-edit"
                         style="display: none; max-width: 100%; height: auto;">
 
                     <div class="mb-3">
                         @if ($carousel)
-                            <img src="{{ Storage::url($carousel->image) }}" alt="Gambar Lama" id="img-old"
+                            <img src="{{ Storage::url($carousel->image) }}" alt="Gambar Lama" id="img-old-edit"
                                 style="max-width: 100%; height: auto;">
                         @endif
 
                         <input name="old_image" type="hidden" value="{{ $carousel->image ?? '' }}">
                         <label for="image" class="text-gray-800 text-sm font-medium inline-block mb-2">Gambar</label>
 
-                        <input type="file" name="image" id="image" onchange="priviewUpdateImage()"
+                        <input type="file" name="image" id="imageEdit" onchange="priviewUpdateImageEdit()"
                             class="block w-full border border-gray-200 shadow-sm rounded-md
                             text-sm focus:z-10 focus:border-blue-500 focus:ring-blue-500 
                             disabled:opacity-50 disabled:pointer-events-none
@@ -77,10 +77,11 @@
 </div>
 
 <script>
-    function priviewUpdateImage() {
-        let image = document.getElementById("image");
-        let imgImage = document.getElementById("img-priview");
-        let imgOld = document.getElementById("img-old");
+    // edit
+    function priviewUpdateImageEdit() {
+        let image = document.getElementById("imageEdit");
+        let imgImage = document.getElementById("img-priview-edit");
+        let imgOld = document.getElementById("img-old-edit");
 
         console.log("Elemen img-priview:", imgImage);
         console.log("File input:", image.files[0]);

@@ -93,10 +93,25 @@
                         </div>
                     @endforeach
                 </div>
+                <div class="flex justify-center flex-col items-center gap-2">
+                    <div class="text-center">
+                        <p class="text-lg font-neutrif capitalize font-semibold text-gray-800 ">
+                            Dapatkan berita terbaru dan terlengkap dari berbagai kategori hanya di sini!
+                        </p>
+                    </div>
+                    <div class="flex justify-center items-center gap-2">
+                        👉
+                        <a
+                            class="font-neutrif text-sm rounded-full cursor-pointer p-2 bg-cyan-600 border hover:bg-cyan-500 hover:text-white transition duration-500 ease-in-out border-cyan-700">Lihat Semua
+                            Berita</a> 👈
+                    </div>
+
+                </div>
             </div>
             <div class="gap-4 flex flex-col mt-10 lg:mt-0 ">
                 <div class="flex justify-center ">
-                    <h1 data-aos="fade-up" class="text-xl font-bold  font-neutrif text-slate-800 border-b-2 block border-cyan-500">
+                    <h1 data-aos="fade-up"
+                        class="text-xl font-bold  font-neutrif text-slate-800 border-b-2 block border-cyan-500">
                         Agenda
                         Terbaru</h1>
                 </div>
@@ -109,7 +124,8 @@
                         </div>
 
                         <div>
-                            <h2 class="text-[14px] font-semibold font-neutrif text-slate-800">Lorem ipsum dolor sit amet consectetur
+                            <h2 class="text-[14px] font-semibold font-neutrif text-slate-800">Lorem ipsum dolor sit amet
+                                consectetur
                             </h2>
                             <span class="text-[10px] text-gray-500 font-neutrif">12-12-2021</span>
                         </div>
