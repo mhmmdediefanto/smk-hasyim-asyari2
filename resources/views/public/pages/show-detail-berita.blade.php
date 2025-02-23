@@ -3,7 +3,7 @@
 @section('content')
     <div class="max-w-[1200px] container my-10 lg:px-16">
         <div class="flex flex-col justify-between lg:flex-row-reverse items-center">
-            <x-breadcrumbs  class="font-neutrif"/>
+            <x-breadcrumbs class="font-neutrif" />
             <h1 class="font-neutrif lg:text-lg font-bold text-slate-600 text-md mb-2">{{ $berita->title }}</h1>
         </div>
         <div class="grid grid-cols-1 lg:grid-cols-3 gap-4">
@@ -25,6 +25,10 @@
 
                                 <p> <i class="uil uil-tag"></i> {{ $berita->kategoriBerita->name }}</p>
                             </div>
+                            <p
+                                class="text-[10px] cursor-pointer lg:text-[10px] bg-cyan-500 text-white py-1 px-2 rounded-lg font-neutrif">
+                                <i class="uil uil-eye"></i> views : {{ $berita->logVisitBeritas->count() }}
+                            </p>
                         </div>
 
                         <hr class="my-4">

@@ -2,6 +2,7 @@
 
 namespace App\Models;
 
+use Carbon\Carbon;
 use Illuminate\Database\Eloquent\Model;
 use Cviebrock\EloquentSluggable\Sluggable;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
@@ -36,6 +37,16 @@ class Berita extends Model
     public function user(): BelongsTo
     {
         return $this->belongsTo(User::class);
+    }
+
+    public function getCreatedAtFormattedAttribute()
+    {
+        return Carbon::parse($this->created_at)->translatedFormat('d F Y');
+    }
+
+    public function logVisitBeritas()
+    {
+        return $this->hasMany(LogVisitBerita::class);
     }
 
     public function sluggable(): array

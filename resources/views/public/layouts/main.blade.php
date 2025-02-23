@@ -5,6 +5,7 @@
     <meta charset="utf-8">
     <meta content="width=device-width, initial-scale=1.0" name="viewport">
     <meta name="robots" content="index, follow">
+    <meta name="app-url" content="{{ env('APP_URL') }}">
     <!-- Meta Description -->
     <meta name="description"
         content="SMK NU Hasyim Asy'ari 2 Kudus menyediakan sistem informasi sekolah berbasis web untuk mempermudah administrasi, absensi, dan layanan akademik siswa serta tenaga pendidik.">
@@ -153,6 +154,8 @@
     <script src="{{ asset('assets/vendor/glightbox/js/glightbox.min.js') }}"></script>
     <script src="{{ asset('assets/vendor/purecounter/purecounter_vanilla.js') }}"></script>
     <script src="{{ asset('assets/vendor/swiper/swiper-bundle.min.js') }}"></script>
+
+    <script src="{{ asset('assets/js/watermak-copy.js') }}"></script>
 
     <!-- Main JS File -->
     <script src="{{ asset('assets/js/main.js') }}"></script>

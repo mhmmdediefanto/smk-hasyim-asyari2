@@ -2,15 +2,20 @@
 
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\CheckSlugController;
+use App\Http\Controllers\DashboardAgendaController;
 use App\Http\Controllers\DashboardBeritaController;
 use App\Http\Controllers\DashboardKategoriBeritaController;
 use App\Http\Controllers\DashbordCarouselManagementController;
 use App\Http\Controllers\PublicController;
+use App\Http\Controllers\UploadOnDeleteImageController;
 use Illuminate\Support\Facades\Route;
 
 use function PHPUnit\Framework\returnSelf;
 
 Route::get('/', [PublicController::class, 'index'])->name('home');
+Route::get('/berita', [PublicController::class, 'beritaAll'])->name('berita');
+Route::get('/agenda-kegiatan', [PublicController::class, 'agendaAll'])->name('agenda-kegiatan');
+Route::get('/agenda-kegiatan/{slug}', [PublicController::class, 'agendaShow'])->name('agenda-kegiatan.show');
 Route::get('/berita/{slug}', [PublicController::class, 'show'])->name('berita.show');
 
 // route auth
@@ -102,11 +107,18 @@ Route::group(['middleware' => 'auth'], function () {
         Route::post('/carousel-management/store', [DashbordCarouselManagementController::class, 'store'])->name('dashboard.carousel-management.store');
         Route::delete('/carousel-management/delete/{id}', [DashbordCarouselManagementController::class, 'destroy'])->name('dashboard.carousel-management.delete');
         Route::put('/carousel-management/edit/{id}', [DashbordCarouselManagementController::class, 'update'])->name('dashboard.carousel-management.update');
+
+        // agenda kegiatan
+        Route::get('/agenda-kegiatan', [DashboardAgendaController::class, 'index'])->name('dashboard.agenda-kegiatan');
+        Route::get('/agenda-kegiatan/create', [DashboardAgendaController::class, 'create'])->name('dashboard.agenda-kegiatan.create');
+        Route::post('/agenda-kegiatan/store', [DashboardAgendaController::class, 'store'])->name('dashboard.agenda-kegiatan.store');
+        Route::get('/agenda-kegiatan/checkSlug', [DashboardAgendaController::class, 'checkSlug'])->name('dashboard.agenda-kegiatan.checkSlug');
     });
 });
 
-// route checkslug
-Route::get('/checkSlug', [CheckSlugController::class, 'checkSlug'])->name('checkSlug');
+// route upload image
+Route::post('/upload-image', [UploadOnDeleteImageController::class, 'uploadImage'])->name('upload-image');
+Route::post('/delete-image', [UploadOnDeleteImageController::class, 'deleteImage'])->name('delete-image');
 
 // route 404
 Route::fallback(function () {

@@ -45,6 +45,24 @@
                     </li>
                 </ul>
             </li>
+            <li class="menu-item">
+                <a href="javascript:void(0)" data-hs-collapse="#agendaKegiatan"
+                    class="menu-link {{ Request::is('dashboard/agenda-kegiatan*') ? 'active' : '' }}">
+                    <span class="menu-icon"><i class="uil uil-bookmark-full"></i></span>
+                    <span class="menu-text"> Agenda Kegiatan </span>
+                    <span class="menu-arrow"></span>
+                </a>
+
+                <ul id="agendaKegiatan" class="sub-menu hidden">
+                    <li class="menu-item">
+                        <a href="{{ route('dashboard.agenda-kegiatan') }}"
+                            class="menu-link {{ Request::is('dashboard/agenda-kegiatan') ? 'active text-cyan-500' : '' }}">
+                            <span class="menu-dot"></span>
+                            <span class="menu-text">Agenda</span>
+                        </a>
+                    </li>
+                </ul>
+            </li>
             <li class="menu-title">Content</li>
 
             <li class="menu-item">

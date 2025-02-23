@@ -11,13 +11,19 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('kategori_beritas', function (Blueprint $table) {
+        Schema::create('agendas', function (Blueprint $table) {
             $table->id();
             $table->unsignedBigInteger('user_id');
             $table->foreign('user_id')->references('id')->on('users');
 
-            $table->string('name');
+            $table->string('image')->nullable();
+            $table->string('title');
             $table->string('slug')->unique();
+            $table->date('tanggal_mulai');
+            $table->date('tanggal_selesai');
+            $table->string('penyelenggara', 100)->nullable()->default('text');
+            $table->string('tempat', 100)->nullable()->default('text');
+            $table->text('body');
             $table->timestamps();
         });
     }
@@ -27,6 +33,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('kategori_beritas');
+        Schema::dropIfExists('agendas');
     }
 };
