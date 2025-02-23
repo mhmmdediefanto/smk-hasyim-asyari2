@@ -35,6 +35,7 @@ class KategoriBeritaSeeder extends Seeder
             KategoriBerita::create([
                 'name' => $value,
                 'slug' => Str::slug($value),
+                'user_id' => 1
             ]);
         }
     }

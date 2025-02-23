@@ -52,13 +52,14 @@
                     @foreach ($beritas as $berita)
                         <div class="w-full h-auto overflow-hidden " data-aos="fade-up">
                             <div class="w-full overflow-hidden shadow-sm">
-                                <img src="{{ asset('storage/' . $berita->image) }}" alt=""
+                                <img src="{{ asset('storage/' . $berita->image) }}"
+                                    alt="{{ $berita->slug }}-smk-nu-hasyim-asy'ari-2-kudus"
                                     class="w-full h-[215px] lg:h-[230px] hover:scale-110 transition duration-500 ease-in-out">
                             </div>
                             <div class="w-full h-full relative top-[-50px]">
                                 <div
-                                    class="w-[320px]  md:w-[550px] lg:w-[360px] h-auto mx-auto bg-white hover:border-t-4 hover:border-t-cyan-400 p-3 transition duration-500 ease-in-out shadow-sm">
-                                    <div class="w-full flex justify-between items-center mb-2">
+                                    class="w-[360px]  md:w-[550px] lg:w-[360px] h-auto mx-auto bg-white hover:border-t-4 hover:border-t-cyan-400 p-3 transition duration-500 ease-in-out shadow-sm">
+                                    <div class="w-full flex justify-between flex-wrap items-center mb-2">
                                         <span
                                             class="text-[12px] lg:text-[10px] text-gray-500 font-neutrif">{{ $berita->created_at->diffForHumans() }}</span>
 
@@ -73,7 +74,7 @@
                                             $excerptForTitle = rtrim($excerptTitle, '.') . '...';
                                         @endphp
                                         <a href="{{ route('berita.show', $berita->slug) }}"
-                                            class="font-neutrif text-[15px] lg:text-sm font-bold text-slate-700 text-clip hover:underline hover:text-cyan-500 transition duration-500 ease-in-out cursor-pointer leading-tight">
+                                            class="font-neutrif text-[15px] lg:text-lg font-bold text-slate-700 text-clip hover:underline hover:text-cyan-500 transition duration-500 ease-in-out cursor-pointer leading-tight">
                                             {{ $excerptForTitle }}
                                         </a>
                                         @php
@@ -101,36 +102,16 @@
                     </div>
                     <div class="flex justify-center items-center gap-2">
                         👉
-                        <a
-                            class="font-neutrif text-sm rounded-full cursor-pointer p-2 bg-cyan-600 border hover:bg-cyan-500 hover:text-white transition duration-500 ease-in-out border-cyan-700">Lihat Semua
+                        <a href="{{ route('berita') }}"
+                            class="font-neutrif text-sm rounded-full cursor-pointer p-2 bg-cyan-600 border hover:bg-cyan-500 hover:text-white transition duration-500 ease-in-out border-cyan-700">Lihat
+                            Semua
                             Berita</a> 👈
                     </div>
 
                 </div>
             </div>
             <div class="gap-4 flex flex-col mt-10 lg:mt-0 ">
-                <div class="flex justify-center ">
-                    <h1 data-aos="fade-up"
-                        class="text-xl font-bold  font-neutrif text-slate-800 border-b-2 block border-cyan-500">
-                        Agenda
-                        Terbaru</h1>
-                </div>
-                <div class="grid grid-cols-1">
-                    <div data-aos="zoom-in-up"
-                        class="w-full shadow-sm rounded-lg overflow-hidden bg-white px-3 py-2 flex flex-row gap-2 items-center">
-                        <div class="w-20 h-20 rounded-lg overflow-hidden">
-                            <img src="{{ asset('assets/img/services.jpg') }}" alt=""
-                                class="w-20 h-20 object-cover rounded-lg shadow-lg">
-                        </div>
-
-                        <div>
-                            <h2 class="text-[14px] font-semibold font-neutrif text-slate-800">Lorem ipsum dolor sit amet
-                                consectetur
-                            </h2>
-                            <span class="text-[10px] text-gray-500 font-neutrif">12-12-2021</span>
-                        </div>
-                    </div>
-                </div>
+                @include('public.components.Agenda')
             </div>
         </div>
 </section>
