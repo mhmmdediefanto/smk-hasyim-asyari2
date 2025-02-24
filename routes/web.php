@@ -113,6 +113,9 @@ Route::group(['middleware' => 'auth'], function () {
         Route::get('/agenda-kegiatan/create', [DashboardAgendaController::class, 'create'])->name('dashboard.agenda-kegiatan.create');
         Route::post('/agenda-kegiatan/store', [DashboardAgendaController::class, 'store'])->name('dashboard.agenda-kegiatan.store');
         Route::get('/agenda-kegiatan/checkSlug', [DashboardAgendaController::class, 'checkSlug'])->name('dashboard.agenda-kegiatan.checkSlug');
+        Route::get('/agenda-kegiatan/edit/{id}', [DashboardAgendaController::class, 'editShow'])->name('dashboard.agenda-kegiatan.edit');
+        Route::put('/agenda-kegiatan/edit/{id}', [DashboardAgendaController::class, 'update'])->name('dashboard.agenda-kegiatan.update');
+        Route::delete('/agenda-kegiatan/delete/{id}', [DashboardAgendaController::class, 'destroy'])->name('dashboard.agenda-kegiatan.delete');
     });
 });
 

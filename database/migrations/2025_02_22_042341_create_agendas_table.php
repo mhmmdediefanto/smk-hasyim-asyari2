@@ -23,7 +23,7 @@ return new class extends Migration
             $table->date('tanggal_selesai');
             $table->string('penyelenggara', 100)->nullable()->default('text');
             $table->string('tempat', 100)->nullable()->default('text');
-            $table->text('body');
+            $table->text('body')->nullable();
             $table->timestamps();
         });
     }
