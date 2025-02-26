@@ -1,6 +1,10 @@
 @extends('public.layouts.main')
 
 @section('content')
+@push('meta')
+<meta property="og:image" content="{{ asset('storage/' . $berita->image) }}">
+@endpush
+
     <div class="max-w-[1200px] container my-10 lg:px-16">
         <div class="flex flex-col justify-between lg:flex-row-reverse items-center">
             <x-breadcrumbs class="font-neutrif" />
@@ -36,6 +40,41 @@
                             {!! $berita->body !!}
                         </div>
 
+
+                        {{-- share --}}
+                        <hr class="my-4">
+                        <div>
+                            <i class="uil uil-share-alt text-2xl text-cyan-400"></i>
+                            <div class="flex items-center gap-2">
+                                <p class="font-neutrif to-slate-400 text-sm lg:text-lg capitalize">share :</p>
+
+                                <div class="flex items-center gap-1">
+                                    <!-- Share ke WhatsApp -->
+                                    <a href="https://api.whatsapp.com/send?text={{ urlencode($berita->title . ' ' . url()->current()) }}"
+                                        target="_blank">
+                                        <i class="uil uil-whatsapp-alt text-green-700 text-2xl"></i>
+                                    </a>
+
+                                    <!-- Share ke YouTube (tidak relevan, bisa dihapus atau ganti Twitter) -->
+                                    <a href="https://twitter.com/intent/tweet?text={{ urlencode($berita->title . ' ' . url()->current()) }}"
+                                        target="_blank">
+                                        <i class="uil uil-twitter text-blue-500 text-2xl"></i>
+                                    </a>
+
+                                    <!-- Share ke Facebook -->
+                                    <a href="https://www.facebook.com/sharer/sharer.php?u={{ urlencode(url()->current()) }}"
+                                        target="_blank">
+                                        <i class="uil uil-facebook text-blue-700 text-2xl"></i>
+                                    </a>
+
+                                    <!-- Share ke Instagram (Instagram tidak mendukung direct sharing, bisa diarahkan ke profil) -->
+                                    <a href="https://www.instagram.com/" target="_blank">
+                                        <i class="uil uil-instagram-alt text-pink-600 text-2xl"></i>
+                                    </a>
+                                </div>
+                            </div>
+
+                        </div>
                     </div>
                 </div>
             </div>

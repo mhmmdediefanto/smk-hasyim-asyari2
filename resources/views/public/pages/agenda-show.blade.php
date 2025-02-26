@@ -1,6 +1,9 @@
 @extends('public.layouts.main')
 
 @section('content')
+    @push('meta')
+        <meta property="og:image" content="{{ asset('storage/' . $agenda->image) }}">
+    @endpush
     <div class= "container py-10 w-full" style="background-color: #fbfbfb">
         <div class="container mx-auto px-4 text-center mb-5">
             <h1 class="text-3xl font-bold font-neutrif">Agenda & Kegiatan SMK NU Hasyim Asy'ari 2 Kudus</h1>
@@ -84,9 +87,38 @@
                         <p class="font-neutrif mt-4">{!! $agenda->body !!}</p>
 
                         <hr class="text-slate-400">
+                        {{-- share  --}}
                         <div>
                             <i class="uil uil-share-alt text-2xl text-cyan-400"></i>
-                            <p class="font-neutrif to-slate-400 text-sm lg:text-lg capitalize">share :</p>
+                            <div class="flex items-center gap-2">
+                                <p class="font-neutrif to-slate-400 text-sm lg:text-lg capitalize">share :</p>
+
+                                <div class="flex items-center gap-1">
+                                    <!-- Share ke WhatsApp -->
+                                    <a href="https://api.whatsapp.com/send?text={{ urlencode($agenda->title . ' ' . url()->current()) }}"
+                                        target="_blank">
+                                        <i class="uil uil-whatsapp-alt text-green-700 text-2xl"></i>
+                                    </a>
+
+                                    <!-- Share ke YouTube (tidak relevan, bisa dihapus atau ganti Twitter) -->
+                                    <a href="https://twitter.com/intent/tweet?text={{ urlencode($agenda->title . ' ' . url()->current()) }}"
+                                        target="_blank">
+                                        <i class="uil uil-twitter text-blue-500 text-2xl"></i>
+                                    </a>
+
+                                    <!-- Share ke Facebook -->
+                                    <a href="https://www.facebook.com/sharer/sharer.php?u={{ urlencode(url()->current()) }}"
+                                        target="_blank">
+                                        <i class="uil uil-facebook text-blue-700 text-2xl"></i>
+                                    </a>
+
+                                    <!-- Share ke Instagram (Instagram tidak mendukung direct sharing, bisa diarahkan ke profil) -->
+                                    <a href="https://www.instagram.com/" target="_blank">
+                                        <i class="uil uil-instagram-alt text-pink-600 text-2xl"></i>
+                                    </a>
+                                </div>
+                            </div>
+
                         </div>
                     </div>
                 </div>

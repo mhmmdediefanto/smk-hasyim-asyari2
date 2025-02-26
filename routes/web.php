@@ -4,19 +4,22 @@ use App\Http\Controllers\AuthController;
 use App\Http\Controllers\CheckSlugController;
 use App\Http\Controllers\DashboardAgendaController;
 use App\Http\Controllers\DashboardBeritaController;
+use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\DashboardKategoriBeritaController;
 use App\Http\Controllers\DashbordCarouselManagementController;
 use App\Http\Controllers\PublicController;
+use App\Http\Controllers\SearchController;
 use App\Http\Controllers\UploadOnDeleteImageController;
 use Illuminate\Support\Facades\Route;
-
-use function PHPUnit\Framework\returnSelf;
 
 Route::get('/', [PublicController::class, 'index'])->name('home');
 Route::get('/berita', [PublicController::class, 'beritaAll'])->name('berita');
 Route::get('/agenda-kegiatan', [PublicController::class, 'agendaAll'])->name('agenda-kegiatan');
 Route::get('/agenda-kegiatan/{slug}', [PublicController::class, 'agendaShow'])->name('agenda-kegiatan.show');
 Route::get('/berita/{slug}', [PublicController::class, 'show'])->name('berita.show');
+
+// cari
+Route::get('/cari', [SearchController::class, 'search'])->name('search');
 
 // route auth
 Route::get('/login', [AuthController::class, 'login'])->name('login')->middleware('guest');
@@ -27,6 +30,7 @@ Route::get('/register', function () {
     return view('auth.register');
 })->name('register');
 
+Route::get('/program-keahlian', fn() => redirect()->route('maintenance'))->name('program-keahlian');
 
 
 // Profile
@@ -80,10 +84,9 @@ Route::prefix('portal')->group(function () {
 
 Route::group(['middleware' => 'auth'], function () {
     Route::prefix('dashboard')->group(function () {
-        Route::get('/', function () {
-            return view('dashboard.index');
-        })->name('dashboard');
+        Route::get('/', [DashboardController::class, 'index'])->name('dashboard');
 
+        Route::get('/settings', [DashboardController::class, 'settingShow'])->name('dashboard.settings');
 
         // berita
         Route::get('/berita', [DashboardBeritaController::class, 'index'])->name('dashboard.berita');

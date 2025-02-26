@@ -16,22 +16,17 @@ class PublicController extends Controller
     {
         $agendas = Agenda::select('id', 'image', 'slug', 'title', 'tanggal_mulai', 'tempat')->latest()->take(6)->get();
         $carousels = Carousel::with('user')->select('image', 'title', 'tagline')->get();
-        $beritas = Berita::with('user', 'kategoriBerita')->select('id', 'title', 'slug', 'image', 'user_id', 'excerpt', 'kategori_berita_id', 'created_at')->latest()->take(4)->get();
+        $beritas = Berita::with('kategoriBerita')->select('id', 'title', 'slug', 'image', 'user_id', 'excerpt', 'kategori_berita_id', 'created_at')->latest()->take(4)->get();
         return view('public.index', compact('beritas', 'carousels', 'agendas'));
     }
 
-    public function beritaAll()
+    public function beritaAll(Request $request)
     {
         $kategories = KategoriBerita::select('id', 'slug', 'name')->get();
         $beritas = Berita::with(['user:id,name', 'kategoriBerita:id,name,slug', 'logVisitBeritas'])->select('id', 'title', 'slug', 'image', 'user_id', 'excerpt', 'kategori_berita_id', 'created_at')->latest()->paginate(10);
 
         // Berita terpopuler (3 berita dengan kunjungan terbanyak)
-        $beritaTerpopulers = Berita::with(['user:id,name', 'kategoriBerita:id,name,slug'])
-            ->select('id', 'title', 'slug', 'image')
-            ->withCount('logVisitBeritas') // Hitung jumlah kunjungan
-            ->orderByDesc('log_visit_beritas_count') // Urutkan berdasarkan kunjungan terbanyak
-            ->take(5)
-            ->get();
+        $beritaTerpopulers = Berita::getBeritaTerpopuler();
 
 
         return view('public.pages.berita-all', compact('beritas', 'kategories', 'beritaTerpopulers'));
@@ -39,8 +34,12 @@ class PublicController extends Controller
 
     public function agendaAll()
     {
-        $agendas = Agenda::select('id', 'image', 'slug', 'title', 'tanggal_mulai', 'body')->latest()->paginate(10);
-        return view('public.pages.agenda-all', compact('agendas'));
+        $agendas = Agenda::select('id', 'image', 'slug', 'title', 'tanggal_mulai', 'body', 'tempat')->latest()->paginate(10);
+
+
+        $beritaTerpopulers = Berita::getBeritaTerpopuler();
+
+        return view('public.pages.agenda-all', compact('agendas', 'beritaTerpopulers'));
     }
 
     public function agendaShow($slug)

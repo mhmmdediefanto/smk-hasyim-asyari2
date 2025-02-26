@@ -20,12 +20,22 @@
     <meta name="google-site-verification" content="kode_verifikasi_google">
     <meta name="msvalidate.01" content="kode_verifikasi_bing">
 
+    <meta property="og:locale" content="id_ID">
+
+    {{-- twitter --}}
+    <meta name="twitter:site" content="@smkhasyimasyari2kudus">
+    <meta name="twitter:creator" content="@smkhasyimasyari2kudus">
+
 
     <!-- Open Graph untuk Facebook -->
     <meta property="og:title" content="SMK NU Hasyim Asy'ari 2 Kudus - Sistem Informasi Sekolah">
     <meta property="og:description"
         content="SMK NU Hasyim Asy'ari 2 Kudus menyediakan sistem informasi sekolah berbasis web untuk kemudahan akademik dan administrasi siswa serta guru.">
-    <meta property="og:image" content="{{ asset('logo/logo_smk_hasyim_asyari_2_kudus.png') }}">
+    <meta property="og:image" content="{{ asset('storage/logo/logo_smk_hasyim_asyari_2_kudus.png') }}">
+    <meta property="og:image:alt" content="Logo SMK NU Hasyim Asy'ari 2 Kudus">
+    <meta property="og:image:width" content="1200">
+    <meta property="og:image:height" content="630">
+    @stack('meta')
     <!-- Ganti dengan URL gambar -->
     <meta property="og:url" content="{{ url()->current() }}">
     <meta property="og:type" content="website">
@@ -53,22 +63,24 @@
     <!-- Schema Markup JSON-LD -->
     <script type="application/ld+json">
         {
-            "@context": "https://schema.org",
+            "@context": "{{  env('APP_URL') }}",
             "@type": "EducationalOrganization",
             "name": "SMK NU Hasyim Asy'ari 2 Kudus",
-            "url": "https://www.smkhasyimasyari2kudus.ac.id",
-            "logo": "https://www.smkhasyimasyari2kudus.ac.id/logo.jpg",
+            "description": "SMK NU Hasyim Asy'ari 2 Kudus adalah sekolah berbasis Islam yang menyediakan pendidikan berkualitas dan sistem informasi akademik digital.",
+            "email": "info@smkhasyimasyari2kudus.ac.id",
+            "url": "{{  env('APP_URL') }}",
+            "logo": "{{ asset('logo/logo_smk_hasyim_asyari_2_kudus.png') }}",
             "address": {
                 "@type": "PostalAddress",
-                "streetAddress": "Jl. KH Hasyim Asy'ari No. 2",
+                "streetAddress": "Jl. Sudimoro, Sudimoro, Karangmalang, Kec. Gebog",
                 "addressLocality": "Kudus",
                 "addressRegion": "Jawa Tengah",
-                "postalCode": "59319",
+                "postalCode": "59333",
                 "addressCountry": "ID"
             },
             "contactPoint": {
                 "@type": "ContactPoint",
-                "telephone": "+62 812-3456-7890",
+                "telephone": "+62 85725091919",
                 "contactType": "customer service",
                 "availableLanguage": "Indonesian"
             },

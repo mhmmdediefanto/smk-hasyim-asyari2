@@ -73,8 +73,20 @@
                 </div>
             </div>
 
-            <div class="flex flex-col w-full bg-white shadow-md">
-                <h2>halaman berita terbaru</h2>
+            <div class="flex flex-col w-full shadow-md p-3 overflow-hidden" style="background-color: #fbfbfb">
+                @include('public.components.Cari')
+
+                <div class="my-3 flex flex-col gap-4">
+                    @include('public.components.Agenda', [
+                        'agendas' => $agendas->take(5),
+                    ])
+                </div>
+                <div class="my-3">
+                    @include('public.components.Berita-sidebar', [
+                        'beritaTerpopulers' => $beritaTerpopulers,
+                    ])
+                </div>
+
             </div>
         </div>
     </div>

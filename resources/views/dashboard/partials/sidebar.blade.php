@@ -3,8 +3,8 @@
 
     <!-- Brand Logo -->
     <a href="index.html" class="logo-box">
-        <img src="{{ asset('logo/logotagline.png') }}" class="logo-light h-6" alt="Smk Nu Hasyim Asy'ari 2 Kudus">
-        <img src="{{ asset('logo/logotagline.png') }}" class="logo-dark h-6" alt="Smk Nu Hasyim Asy'ari 2 Kudus">
+        <img src="{{ asset('logo/logo_smk_fiks.png') }}" class="logo-light h-6" alt="Smk Nu Hasyim Asy'ari 2 Kudus">
+        <img src="{{ asset('logo/logo_smk_fiks.png') }}" class="logo-dark h-6" alt="Smk Nu Hasyim Asy'ari 2 Kudus">
     </a>
 
     <!--- Menu -->
@@ -66,6 +66,11 @@
             <li class="menu-title">Content</li>
 
             <li class="menu-item">
+                <a href="{{ route('dashboard.settings') }}"
+                    class="menu-link {{ Request::is('dashboard/settings') ? 'active' : '' }}">
+                    <span class="menu-icon"><i class="uil uil-setting"></i></span>
+                    <span class="menu-text"> Settings </span>
+                </a>
                 <a href="{{ route('dashboard.carousel-management') }}"
                     class="menu-link {{ Request::is('dashboard/carousel-management') ? 'active' : '' }}">
                     <span class="menu-icon"><i class="uil uil-coronavirus"></i></span>

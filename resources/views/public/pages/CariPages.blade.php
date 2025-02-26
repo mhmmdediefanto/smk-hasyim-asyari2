@@ -15,8 +15,9 @@
             <div class="lg:col-span-2 grid grid-cols-1 gap-4">
                 <div class="grid grid-cols-1 lg:grid-cols-2 gap-4">
 
-                    @foreach ($beritas as $berita)
-                        <div class="w-full h-auto overflow-hidden bg-white shadow-md" data-aos="fade-up">
+                   
+                    @forelse ($beritas as $berita)
+                        <div class="w-full h-[380px] overflow-hidden bg-white shadow-md" data-aos="fade-up">
                             <div class="w-full overflow-hidden shadow-sm">
                                 <img src="{{ asset('storage/' . $berita->image) }}"
                                     alt="{{ $berita->slug }}-smk-nu-hasyim-asy'ari-2-kudus"
@@ -67,90 +68,68 @@
                                 </div>
                             </div>
                         </div>
-                    @endforeach
-                </div>
-                <div class="w-full flex gap-2 mb-3">
-                    {{ $beritas->links('vendor.pagination.tailwind') }}
-                </div>
-            </div>
-
-            <div class="flex flex-col w-full bg-white shadow-md p-3">
-
-                @include('public.components.Cari')
-
-                <div class="mb-3 mt-3">
-                    <h2
-                        class="text-slate-900 font-neutrif font-bold text-lg capitalize mb-3 border-b-2 inline border-cyan-500">
-                        berita terbaru</h2>
-                </div>
-                <div class="grid grid-cols-1 gap-4">
-                    @foreach ($beritas->take(5) as $berita)
-                        <div class="flex gap-3 items-center">
-                            <div class="w-[70px] h-[40px] overflow-hidden">
-                                <img src="{{ asset('storage/' . $berita->image) }}" alt="{{ $berita->slug }}"
-                                    class="w-full h-full object-cover">
-                            </div>
-
-                            @php
-                                // Potong excerpt menjadi 100 karakter
-                                $title = substr($berita->title, 0, 100);
-                                // Menambahkan "..." jika teks terpotong
-                                $title = rtrim($title, '.') . '...';
-                            @endphp
-                            <div class="flex w-full flex-col">
-                                <a href="{{ route('berita.show', $berita->slug) }}"
-                                    class="font-bold text-slate-900 font-neutrif">{{ $title }}</a>
-                                <p class="text-slate-400 italic text-sm font-neutrif mt-1">
-                                    {{ $berita->created_at_formatted }}</p>
-                            </div>
-                        </div>
-                    @endforeach
-                </div>
-
-
-                <div class="my-3">
-                    <h2
-                        class="text-slate-900 font-neutrif font-bold text-lg capitalize mb-3 border-b-2 inline border-cyan-500">
-                        Kategori berita</h2>
-                    <div class="flex flex-wrap gap-2 mt-3">
-                        @forelse ($kategories as $kategori)
-                            <a href=""
-                                class="text-[10px] cursor-pointer lg:text-[10px] bg-cyan-500 text-white py-1 px-2 rounded-lg font-neutrif hover:bg-cyan-300 ">
-                                {{ $kategori->name }} </a>
                         @empty
-                            <p class="text-slate-600 mt-2  text-[12px] lg:text-[12px] font-neutrif"> Tidak ada kategori </p>
+                           <div>
+                            <p class="text-center font-neutrif font-bold text-red-600">Data tidak ditemukan</p>
+                           </div>
                         @endforelse
+                    </div>
+                    <div class="w-full flex gap-2 mb-3">
+                        {{ $beritas->links('vendor.pagination.tailwind') }}
                     </div>
                 </div>
 
-                <div class="mb-3">
-                    <h2
-                        class="text-slate-900 font-neutrif font-bold text-lg capitalize mb-3 border-b-2 inline border-cyan-500">
-                        berita terpopuler</h2>
-                </div>
-                <div class="grid grid-cols-1 gap-4">
-                    @foreach ($beritaTerpopulers as $beritaTerpopuler)
-                        <div class="flex gap-3 items-center">
-                            <div class="w-[70px] h-[40px] overflow-hidden">
-                                <img src="{{ asset('storage/' . $beritaTerpopuler->image) }}"
-                                    alt="{{ $beritaTerpopuler->slug }}" class=" object-cover h-full w-full">
+                <div class="flex flex-col w-full bg-white shadow-md p-3">
+
+                    @include('public.components.Cari')
+
+                    <div class="mb-3 mt-3">
+                        <h2
+                            class="text-slate-900 font-neutrif font-bold text-lg capitalize mb-3 border-b-2 inline border-cyan-500">
+                            berita terpopuler</h2>
+                    </div>
+                    <div class="grid grid-cols-1 gap-4">
+                        @foreach ($beritaTerpopulers as $berita)
+                            <div class="flex gap-3 items-center">
+                                <div class="w-[70px] h-[40px] overflow-hidden">
+                                    <img src="{{ asset('storage/' . $berita->image) }}" alt="{{ $berita->slug }}"
+                                        class="w-full h-full object-cover">
+                                </div>
+
+                                @php
+                                    // Potong excerpt menjadi 100 karakter
+                                    $title = substr($berita->title, 0, 100);
+                                    // Menambahkan "..." jika teks terpotong
+                                    $title = rtrim($title, '.') . '...';
+                                @endphp
+                                <div class="flex w-full flex-col">
+                                    <a href="{{ route('berita.show', $berita->slug) }}"
+                                        class="font-bold text-slate-900 font-neutrif">{{ $title }}</a>
+                                    <p class="text-slate-400 italic text-sm font-neutrif mt-1">
+                                        {{ $berita->created_at_formatted }}</p>
+                                </div>
                             </div>
-                            @php
-                                // Potong excerpt menjadi 100 karakter
-                                $title = substr($beritaTerpopuler->title, 0, 100);
-                                // Menambahkan "..." jika teks terpotong
-                                $title = rtrim($title, '.') . '...';
-                            @endphp
-                            <div class="flex w-full flex-col">
-                                <a href="{{ route('berita.show', $beritaTerpopuler->slug) }}"
-                                    class="font-bold text-slate-900 font-neutrif">{{ $title }}</a>
-                                <p class="text-slate-400 italic text-sm font-neutrif mt-1">
-                                    {{ $beritaTerpopuler->created_at_formatted }}</p>
-                            </div>
+                        @endforeach
+                    </div>
+
+
+                    <div class="my-3">
+                        <h2
+                            class="text-slate-900 font-neutrif font-bold text-lg capitalize mb-3 border-b-2 inline border-cyan-500">
+                            Kategori berita</h2>
+                        <div class="flex flex-wrap gap-2 mt-3">
+                            @forelse ($kategories as $kategori)
+                                <a href=""
+                                    class="text-[10px] cursor-pointer lg:text-[10px] bg-cyan-500 text-white py-1 px-2 rounded-lg font-neutrif hover:bg-cyan-300 ">
+                                    {{ $kategori->name }} </a>
+                            @empty
+                                <p class="text-slate-600 mt-2  text-[12px] lg:text-[12px] font-neutrif"> Tidak ada kategori </p>
+                            @endforelse
                         </div>
-                    @endforeach
+                    </div>
+
+                   
                 </div>
             </div>
         </div>
-    </div>
-@endsection
+    @endsection
