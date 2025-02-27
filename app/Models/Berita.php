@@ -49,6 +49,17 @@ class Berita extends Model
         return $this->hasMany(LogVisitBerita::class);
     }
 
+    public static function getBeritaTerpopuler()
+    {
+        return   // Berita terpopuler (3 berita dengan kunjungan terbanyak)
+            self::with(['user:id,name', 'kategoriBerita:id,name,slug'])
+            ->select('id', 'title', 'slug', 'image')
+            ->withCount('logVisitBeritas') // Hitung jumlah kunjungan
+            ->orderByDesc('log_visit_beritas_count') // Urutkan berdasarkan kunjungan terbanyak
+            ->take(5)
+            ->get();
+    }
+
     public function sluggable(): array
     {
         return [
@@ -57,4 +68,11 @@ class Berita extends Model
             ]
         ];
     }
+
+
+      // function slugRouteBinding
+      public function getRouteKeyName()
+      {
+          return 'slug';
+      }
 }

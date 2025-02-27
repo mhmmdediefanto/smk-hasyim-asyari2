@@ -3,10 +3,10 @@
     <div class="flex flex-nowrap transition-transform duration-500 ease-in-out" id="carousel">
         @foreach ($carousels as $carousel)
             <div class="min-w-full relative"><img src="{{ asset('storage/' . $carousel->image) }}"
-                    class="w-full lg:h-[88vh] object-center" >
+                    class="w-full lg:h-[82vh] object-center">
                 <div class="absolute inset-0 flex flex-col items-center justify-center text-white text-center">
-                    <h1 class="text-3xl font-bold ">Judul Slide 1</h1>
-                    <p class="text-lg">Tagline untuk slide pertama</p>
+                    <h1 class="text-3xl font-bold ">{{ $carousel->title ?? '' }}</h1>
+                    <p class="text-lg">{{ $carousel->tagline ?? '' }}</p>
                 </div>
             </div>
         @endforeach

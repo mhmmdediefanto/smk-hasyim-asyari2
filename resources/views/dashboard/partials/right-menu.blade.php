@@ -3,17 +3,17 @@
         <!-- Profile Link -->
         <a href="#" type="button" class="flex flex-col items-center gap-1">
             <img src="assets/images/users/avatar-6.jpg" alt="user-image" class="rounded-full h-8 w-8">
-            <span class="font-medium text-base">Jamie D.</span>
-            <span class="text-sm">Admin</span>
+            <span class="font-medium text-base">{{ auth()->user()->name }}</span>
+            {{-- <span class="text-sm">Admin</span> --}}
         </a>
 
-        <!-- Search Modal Button -->
+        {{-- <!-- Search Modal Button -->
         <button type="button" data-hs-overlay="#search-modal" class="bg-white rounded-full shadow-md p-2">
             <span class="sr-only">Search</span>
             <span class="flex items-center justify-center h-6 w-6">
                 <i class="uil uil-search text-2xl"></i>
             </span>
-        </button>
+        </button> --}}
 
         <!-- Fullscreen Toggle Button -->
         <div class="flex">

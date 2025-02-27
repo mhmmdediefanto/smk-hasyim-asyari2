@@ -41,8 +41,10 @@
 
 
     <div class="app-wrapper">
-        {{-- partials sidebar --}}
-        @include('dashboard.partials.sidebar')
+        <div class="app-menu">
+            {{-- partials sidebar --}}
+            @include('dashboard.partials.sidebar')
+        </div>
         <div class="app-content">
             {{-- partial topbar --}}
             @include('dashboard.partials.topbar')
@@ -51,7 +53,10 @@
                 <x-breadcrumbs />
                 @yield('main')
             </main>
+
+            @include('dashboard.partials.footer')
         </div>
+        @include('dashboard.partials.right-menu')
     </div>
 
 

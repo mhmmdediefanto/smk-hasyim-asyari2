@@ -1,7 +1,7 @@
 <div class="branding d-flex align-items-center px-3">
-    <div class="max-w-[1200px] position-relative flex items-center justify-between w-full mx-auto">
+    <div class="max-w-[1200px] position-relative flex items-center justify-between w-full mx-auto bg-white">
         <a href="{{ route('home') }}" class="logo d-flex align-items-center me-auto">
-            <img src="{{ asset('logo/logotagline.png') }}" alt="" class="w-52">
+            <img src="{{ asset('logo/logo_smk_fiks.png') }}" alt="" class="w-72">
         </a>
 
         <nav id="navmenu" class="navmenu justify-end">

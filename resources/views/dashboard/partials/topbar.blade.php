@@ -3,7 +3,7 @@
 
     <!-- Brand Logo -->
     <a href="index.html" class="logo-box">
-        <img src="assets/images/logo-sm.png" class="h-6" alt="Small logo">
+        <img src="{{ asset('logo/logo_smk_fiks.png') }}" class="h-6" alt="Small logo">
     </a>
 
     <!-- Sidenav Menu Toggle Button -->

@@ -46,7 +46,7 @@
 
                                         <td class="px-6 py-3">
                                             <div class="flex items-center gap-3 justify-center">
-                                                <a href=""
+                                                <a href="{{ route('dashboard.agenda-kegiatan.edit', $agenda->id) }}"
                                                     class="relative group text-yellow-500 hover:text-yellow-600">
                                                     <i class="uil uil-file-edit-alt text-lg"></i>
                                                     <span
@@ -54,7 +54,8 @@
                                                         Edit File
                                                     </span>
                                                 </a>
-                                                <a data-confirm-delete="true" href=""
+                                                <a data-confirm-delete="true"
+                                                    href="{{ route('dashboard.agenda-kegiatan.delete', $agenda->id) }}"
                                                     class="relative group text-red-500 hover:text-red-600">
                                                     <i class="uil uil-trash-alt text-lg"></i>
                                                     <span

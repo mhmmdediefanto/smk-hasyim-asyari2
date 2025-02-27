@@ -5,10 +5,12 @@
                 <img src="{{ asset('logo/logotagline.png') }}" alt="">
             </a>
             <div class="footer-contact pt-3">
-                <p class="font-neutrif">Jl. Sudimoro, Sudimoro, Karangmalang, Kec. Gebog, Kabupaten Kudus, Jawa Tengah 59333</p>
+                <p class="font-neutrif">Jl. Sudimoro, Sudimoro, Karangmalang, Kec. Gebog, Kabupaten Kudus, Jawa Tengah
+                    59333</p>
 
                 <p class="mt-3 font-neutrif"><strong>Phone:</strong> <span>(0291) 431063 / 085725091919</span></p>
-                <p class="font-neutrif"><strong>Email:</strong> <a href="mailto:smk_nuha2@yahoo.com"><span>smk_nuha2@yahoo.com</span></a></p>
+                <p class="font-neutrif"><strong>Email:</strong> <a
+                        href="mailto:smk_nuha2@yahoo.com"><span>smk_nuha2@yahoo.com</span></a></p>
             </div>
             <div class="social-links d-flex mt-4">
                 <a href="" class="text-white"><i class="bi bi-twitter-x text-white"></i></a>
@@ -18,47 +20,35 @@
             </div>
         </div>
 
-        <div class="col-lg-2 col-md-3 footer-links text-white">
-            <h4 class="text-white">Useful Links</h4>
+        <div class="col-lg-4 col-md-3 footer-links text-white">
+            <h4 class="text-white font-neutrif">Navigasi</h4>
             <ul>
-                <li><a href="#" class="text-white">Home</a></li>
-                <li><a href="#" class="text-white">About us</a></li>
-                <li><a href="#" class="text-white">Services</a></li>
-                <li><a href="#" class="text-white">Terms of service</a></li>
-                <li><a href="#" class="text-white">Privacy policy</a></li>
+                <li><a href="{{ route('home') }}" class="text-white font-neutrif">Home</a></li>
+                <li><a href="{{ route('visi-misi') }}" class="text-white font-neutrif">Profile</a></li>
+                <li><a href="{{ route('program-keahlian') }}" class="text-white font-neutrif hover:text-cyan-600">Program Keahlian</a></li>
+                <li><a href="{{ route('berita') }}" class="text-white font-neutrif">Berita / Pengumuman</a></li>
+                <li><a href="{{ route('agenda-kegiatan') }}" class="text-white font-neutrif">Agenda Sekolah</a></li>
             </ul>
         </div>
 
-        <div class="col-lg-2 col-md-3 footer-links text-white">
-            <h4 class="text-white">Our Services</h4>
+        <div class="col-lg-4 col-md-3 footer-links text-white">
+            <h4 class="text-white">Layanan</h4>
             <ul>
-                <li><a href="#" class="text-white">Web Design</a></li>
-                <li><a href="#" class="text-white">Web Development</a></li>
-                <li><a href="#" class="text-white">Product Management</a></li>
-                <li><a href="#" class="text-white">Marketing</a></li>
-                <li><a href="#" class="text-white">Graphic Design</a></li>
-            </ul>
-        </div>
-
-        <div class="col-lg-2 col-md-3 footer-links text-white">
-            <h4 class="text-white">Hic solutasetp</h4>
-            <ul>
-                <li><a href="#" class="text-white">Molestiae accusamus iure</a></li>
-                <li><a href="#" class="text-white">Excepturi dignissimos</a></li>
-                <li><a href="#" class="text-white">Suscipit distinctio</a></li>
-                <li><a href="#" class="text-white">Dilecta</a></li>
-                <li><a href="#" class="text-white">Sit quas consectetur</a></li>
-            </ul>
-        </div>
-
-        <div class="col-lg-2 col-md-3 footer-links text-white">
-            <h4 class="text-white">Nobis illum</h4>
-            <ul>
-                <li><a href="#" class="text-white">Ipsam</a></li>
-                <li><a href="#" class="text-white">Laudantium dolorum</a></li>
-                <li><a href="#" class="text-white">Dinera</a></li>
-                <li><a href="#" class="text-white">Trodelas</a></li>
-                <li><a href="#" class="text-white">Flexo</a></li>
+                <li><a href="#"
+                        class="text-white font-neutrif hover:text-cyan-200 transition-all ease-in-out duration-300">Bursa
+                        kerja Khusus (BKK)</a></li>
+                <li><a href="#"
+                        class="text-white font-neutrif hover:text-cyan-200 transition-all ease-in-out duration-300">Praktek
+                        Kerja Industri (Prakerin)</a></li>
+                <li><a href="#"
+                        class="text-white font-neutrif hover:text-cyan-200 transition-all ease-in-out duration-300">E-Raport</a>
+                </li>
+                <li><a href="#"
+                        class="text-white font-neutrif hover:text-cyan-200 transition-all ease-in-out duration-300">Perpustakaan
+                        Digital</a></li>
+                <li><a href="#"
+                        class="text-white font-neutrif hover:text-cyan-200 transition-all ease-in-out duration-300">Ekstra
+                        Kulikuler</a></li>
             </ul>
         </div>
 
@@ -66,6 +56,7 @@
 </div>
 
 <div class="container copyright text-center bg-cyan-950 text-white">
-    <p class="font-neutrif">© <span>Copyright</span> <strong class="px-1 sitename"><a href="{{ route('home') }}">SMK NU HASYIM ASY'ARI 2
+    <p class="font-neutrif">© <span>Copyright</span> <strong class="px-1 sitename"><a href="{{ route('home') }}">SMK NU
+                HASYIM ASY'ARI 2
                 KUDUS</a></strong> <span>All Rights Reserved</span></p>
 </div>

@@ -5,7 +5,7 @@
 
                 <div class="flex justify-center ">
                     <h1 data-aos="fade-up"
-                        class="text-xl font-bold mb-4  font-neutrif text-slate-800 border-b-2 inline border-cyan-500">
+                        class="text-xl font-bold mb-4  font-neutrif text-slate-800 border-b-2 block border-cyan-500">
                         Berita
                         Terbaru</h1>
                 </div>
@@ -51,14 +51,14 @@
                         @endforeach --}}
                     @foreach ($beritas as $berita)
                         <div class="w-full h-auto overflow-hidden " data-aos="fade-up">
-                            <div class="w-full overflow-hidden shadow-sm">
+                            <div class="w-full overflow-hidden shadow-sm rounded-lg">
                                 <img src="{{ asset('storage/' . $berita->image) }}"
                                     alt="{{ $berita->slug }}-smk-nu-hasyim-asy'ari-2-kudus"
-                                    class="w-full h-[215px] lg:h-[230px] hover:scale-110 transition duration-500 ease-in-out">
+                                    class="w-full h-[215px] lg:h-[230px] object-cover hover:scale-110 transition duration-500 ease-in-out">
                             </div>
                             <div class="w-full h-full relative top-[-50px]">
                                 <div
-                                    class="w-[360px]  md:w-[550px] lg:w-[360px] h-auto mx-auto bg-white hover:border-t-4 hover:border-t-cyan-400 p-3 transition duration-500 ease-in-out shadow-sm">
+                                    class="w-[330px]  md:w-[550px] lg:w-[360px] h-auto mx-auto bg-white hover:border-t-4 hover:border-t-cyan-400 p-3 transition duration-500 ease-in-out shadow-sm">
                                     <div class="w-full flex justify-between flex-wrap items-center mb-2">
                                         <span
                                             class="text-[12px] lg:text-[10px] text-gray-500 font-neutrif">{{ $berita->created_at->diffForHumans() }}</span>
