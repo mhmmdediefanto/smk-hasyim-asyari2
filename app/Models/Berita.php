@@ -68,4 +68,11 @@ class Berita extends Model
             ]
         ];
     }
+
+
+      // function slugRouteBinding
+      public function getRouteKeyName()
+      {
+          return 'slug';
+      }
 }

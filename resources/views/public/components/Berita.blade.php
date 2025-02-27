@@ -58,7 +58,7 @@
                             </div>
                             <div class="w-full h-full relative top-[-50px]">
                                 <div
-                                    class="w-[360px]  md:w-[550px] lg:w-[360px] h-auto mx-auto bg-white hover:border-t-4 hover:border-t-cyan-400 p-3 transition duration-500 ease-in-out shadow-sm">
+                                    class="w-[330px]  md:w-[550px] lg:w-[360px] h-auto mx-auto bg-white hover:border-t-4 hover:border-t-cyan-400 p-3 transition duration-500 ease-in-out shadow-sm">
                                     <div class="w-full flex justify-between flex-wrap items-center mb-2">
                                         <span
                                             class="text-[12px] lg:text-[10px] text-gray-500 font-neutrif">{{ $berita->created_at->diffForHumans() }}</span>

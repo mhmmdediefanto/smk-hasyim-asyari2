@@ -124,8 +124,37 @@
                 </div>
             </div>
 
-            <div class="flex flex-col w-full bg-white shadow-md">
-                <h2>halaman berita terbaru</h2>
+            <div class="flex flex-col w-full bg-white shadow-md p-3">
+
+                @include('public.components.Cari')
+
+                <div class="my-3 flex flex-col gap-4">
+                    <div class="grid grid-cols-1 lg:gap-4 gap-3">
+                        @foreach ($agendasTerbaru as $agendaNew)
+                            <div data-aos="zoom-in-up"
+                                class="w-full shadow-sm rounded-lg overflow-hidden bg-white px-3 py-3 flex flex-row gap-2 items-center">
+                                <div class="w-16 h-16 rounded-lg overflow-hidden flex items-center justify-center flex-col "
+                                    style="background-color: #F1F1F1">
+                                    <p class="font-neutrif font-bold text-slate-900 text-[16px]">
+                                        {{ \Carbon\Carbon::parse($agendaNew->tanggal_mulai)->format('M') }}</p>
+                                    <p class="font-neutrif font-bold text-slate-900 text-[16px]">
+                                        {{ \Carbon\Carbon::parse($agendaNew->tanggal_mulai)->format(' d') }}</p>
+                                </div>
+                    
+                                <div class="flex flex-col w-[310px]">
+                                    <a href="{{ route('agenda-kegiatan.show', $agendaNew->slug) }}"
+                                        class="text-[16px] lg:text-[16px] font-semibold font-neutrif text-slate-800 cursor-pointer hover:text-cyan-500 transition-all ease-in-out duration-300 capitalize">{{ $agendaNew->title }}
+                                    </a>
+                                    <span class="text-[10px] text-slate-500 font-neutrif lg:text-sm"> <i
+                                            class="uil uil-calender text-lg"></i> {{ $agendaNew->tanggal_mulai_formatted }}</span>
+                                    <p class=" text-[12px] text-slate-500 lg:text-sm font-neutrif"> <i
+                                            class="uil uil-map-marker text-lg"></i> {{ $agendaNew->tempat }}
+                                    </p>
+                                </div>
+                            </div>
+                        @endforeach
+                    </div>
+                </div>
             </div>
         </div>
     </div>

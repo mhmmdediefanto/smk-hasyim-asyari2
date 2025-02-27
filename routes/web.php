@@ -7,6 +7,7 @@ use App\Http\Controllers\DashboardBeritaController;
 use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\DashboardKategoriBeritaController;
 use App\Http\Controllers\DashbordCarouselManagementController;
+use App\Http\Controllers\KejuruanController;
 use App\Http\Controllers\PublicController;
 use App\Http\Controllers\SearchController;
 use App\Http\Controllers\UploadOnDeleteImageController;
@@ -15,8 +16,10 @@ use Illuminate\Support\Facades\Route;
 Route::get('/', [PublicController::class, 'index'])->name('home');
 Route::get('/berita', [PublicController::class, 'beritaAll'])->name('berita');
 Route::get('/agenda-kegiatan', [PublicController::class, 'agendaAll'])->name('agenda-kegiatan');
+Route::get('/berita/kategori', [PublicController::class, 'kategoriAll'])->name('kategori');
 Route::get('/agenda-kegiatan/{slug}', [PublicController::class, 'agendaShow'])->name('agenda-kegiatan.show');
 Route::get('/berita/{slug}', [PublicController::class, 'show'])->name('berita.show');
+Route::get('/berita/kategori/{slug}', [PublicController::class, 'beritaByKategori'])->name('berita.kategori');
 
 // cari
 Route::get('/cari', [SearchController::class, 'search'])->name('search');
@@ -49,8 +52,8 @@ Route::prefix('profile')->group(function () {
 
 // Kejuruan
 Route::prefix('kejuruan')->group(function () {
-    Route::get('/busana-fashion', fn() => redirect()->route('maintenance'))->name('busana-fashion');
-    Route::get('/tjkt', fn() => redirect()->route('maintenance'))->name('tjkt');
+    Route::get('/busana-fashion', [KejuruanController::class, 'busanaFashion'] )->name('busana-fashion');
+    Route::get('/tjkt', [KejuruanController::class, 'tjkt'])->name('tjkt');
 });
 
 // Ekstra Kulikuler
