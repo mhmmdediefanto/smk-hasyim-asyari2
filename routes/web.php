@@ -6,6 +6,7 @@ use App\Http\Controllers\DashboardAgendaController;
 use App\Http\Controllers\DashboardBeritaController;
 use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\DashboardKategoriBeritaController;
+use App\Http\Controllers\DashboardSettingsController;
 use App\Http\Controllers\DashbordCarouselManagementController;
 use App\Http\Controllers\KejuruanController;
 use App\Http\Controllers\PublicController;
@@ -52,7 +53,7 @@ Route::prefix('profile')->group(function () {
 
 // Kejuruan
 Route::prefix('kejuruan')->group(function () {
-    Route::get('/busana-fashion', [KejuruanController::class, 'busanaFashion'] )->name('busana-fashion');
+    Route::get('/busana-fashion', [KejuruanController::class, 'busanaFashion'])->name('busana-fashion');
     Route::get('/tjkt', [KejuruanController::class, 'tjkt'])->name('tjkt');
 });
 
@@ -90,6 +91,9 @@ Route::group(['middleware' => 'auth'], function () {
         Route::get('/', [DashboardController::class, 'index'])->name('dashboard');
 
         Route::get('/settings', [DashboardController::class, 'settingShow'])->name('dashboard.settings');
+        Route::post('/settings', [DashboardSettingsController::class, 'addFront'])->name('dashboard.settings.add');
+        Route::put('/settings/{id}', [DashboardSettingsController::class, 'updateFront'])->name('dashboard.settings.update');
+        Route::delete('/settings/{id}', [DashboardSettingsController::class, 'destroyFront'])->name('dashboard.settings.delete');
 
         // berita
         Route::get('/berita', [DashboardBeritaController::class, 'index'])->name('dashboard.berita');
