@@ -1,7 +1,13 @@
 <div class="branding d-flex align-items-center px-3">
     <div class="max-w-[1200px] position-relative flex items-center justify-between w-full mx-auto bg-white">
         <a href="{{ route('home') }}" class="logo d-flex align-items-center me-auto">
-            <img src="{{ asset('logo/logo_smk_fiks.png') }}" alt="" class="w-72">
+            @if ($image_header && $title)
+                <img src="{{ Storage::url($image_header) }}" alt=" {{ $title }}"
+                    width="{{ $width ?  $width : '' }}">
+            @else
+                <img src="{{ asset('logo/logo_smk_fiks.png') }}" alt="" class="w-72">
+            @endif
+
         </a>
 
         <nav id="navmenu" class="navmenu justify-end">

@@ -2,7 +2,12 @@
     <div class="row gy-4">
         <div class="col-lg-4 col-md-6 footer-about">
             <a href="index.html" class="logo d-flex align-items-center">
-                <img src="{{ asset('logo/logotagline.png') }}" alt="">
+                @if ($image_footer)
+                    <img src="{{ Storage::url($image_footer) }}" alt="{{ $title ?? '' }}"
+                        width="{{ $width ? $width : '' }}">
+                @else
+                    <img src="{{ asset('logo/logotagline.png') }}" alt="">
+                @endif
             </a>
             <div class="footer-contact pt-3">
                 <p class="font-neutrif">Jl. Sudimoro, Sudimoro, Karangmalang, Kec. Gebog, Kabupaten Kudus, Jawa Tengah
@@ -25,7 +30,8 @@
             <ul>
                 <li><a href="{{ route('home') }}" class="text-white font-neutrif">Home</a></li>
                 <li><a href="{{ route('visi-misi') }}" class="text-white font-neutrif">Profile</a></li>
-                <li><a href="{{ route('program-keahlian') }}" class="text-white font-neutrif hover:text-cyan-600">Program Keahlian</a></li>
+                <li><a href="{{ route('program-keahlian') }}"
+                        class="text-white font-neutrif hover:text-cyan-600">Program Keahlian</a></li>
                 <li><a href="{{ route('berita') }}" class="text-white font-neutrif">Berita / Pengumuman</a></li>
                 <li><a href="{{ route('agenda-kegiatan') }}" class="text-white font-neutrif">Agenda Sekolah</a></li>
             </ul>

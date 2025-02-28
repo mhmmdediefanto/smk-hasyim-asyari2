@@ -1,3 +1,8 @@
+@php
+    $dataFront = App\Models\SettingsFront::first();
+    // dump($dataFront);
+@endphp
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -6,6 +11,7 @@
     <meta content="width=device-width, initial-scale=1.0" name="viewport">
     <meta name="robots" content="index, follow">
     <meta name="app-url" content="{{ env('APP_URL') }}">
+    <title>{{ $dataFront ? $dataFront->title : 'SMK NU Hasyim Asy\'ari 2 Kudus' }}</title>
     <!-- Meta Description -->
     <meta name="description"
         content="SMK NU Hasyim Asy'ari 2 Kudus menyediakan sistem informasi sekolah berbasis web untuk mempermudah administrasi, absensi, dan layanan akademik siswa serta tenaga pendidik.">
@@ -128,7 +134,11 @@
 <body class="index-page overflow-x-hidden bg-slate-50">
     <!-- ======= Top Bar ======= -->
     <header id="header" class="header sticky-top">
-        @include('public.partials.header')
+        @include('public.partials.header', [
+            'image_header' => $dataFront ? $dataFront->image_header : null,
+            'title' => $dataFront ? $dataFront->title : null,
+            'width' => $dataFront ? $dataFront->width : null,
+        ])
     </header>
     <!-- End Header -->
 
@@ -153,7 +163,11 @@
 
     <!-- ======= Footer ======= -->
     <footer id="footer" class="footer light-background">
-        @include('public.partials.footer')
+        @include('public.partials.footer', [
+            'image_footer' => $dataFront ? $dataFront->image_footer : null,
+            'title' => $dataFront ? $dataFront->title : null,
+            'width' => $dataFront ? $dataFront->width : null,
+        ])
     </footer>
     <!-- End Footer -->
 
