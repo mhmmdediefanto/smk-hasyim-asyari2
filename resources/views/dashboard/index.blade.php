@@ -43,7 +43,7 @@
                 </div>
             </div><!--end-->
 
-            <div class="card">
+            {{-- <div class="card">
                 <div class="p-5 flex items-center justify-between">
                     <span>
                         <span class="text-slate-400 font-semibold block">Orders</span>
@@ -61,9 +61,9 @@
                         class="relative inline-block font-semibold tracking-wide align-middle text-base text-center border-none after:content-[''] after:absolute after:h-px after:w-0 hover:after:w-full after:end-0 hover:after:end-auto after:bottom-0 after:start-0 after:transition-all after:duration-500 text-blue-600 hover:text-blue-600 after:bg-blue-600">View
                         data <i class="uil uil-arrow-right"></i></a>
                 </div>
-            </div><!--end-->
+            </div><!--end--> --}}
 
-            <div class="card">
+            {{-- <div class="card">
                 <div class="p-5 flex items-center justify-between">
                     <span>
                         <span class="text-slate-400 font-semibold block">Items</span>
@@ -81,7 +81,7 @@
                         class="relative inline-block font-semibold tracking-wide align-middle text-base text-center border-none after:content-[''] after:absolute after:h-px after:w-0 hover:after:w-full after:end-0 hover:after:end-auto after:bottom-0 after:start-0 after:transition-all after:duration-500 text-blue-600 hover:text-blue-600 after:bg-blue-600">View
                         data <i class="uil uil-arrow-right"></i></a>
                 </div>
-            </div><!--end-->
+            </div><!--end--> --}}
         </div>
     </div>
 @endsection

@@ -17,8 +17,16 @@
             </div>
 
             <div class="flex flex-col w-[310px]">
+
+                @php
+
+                    // Potong excerpt menjadi 100 karakter
+                    $excerptTitle = substr($agenda->title, 0, 75);
+                    // Menambahkan "..." jika teks terpotong
+                    $excerptForTitle = rtrim($excerptTitle, '.') . '...';
+                @endphp
                 <a href="{{ route('agenda-kegiatan.show', $agenda->slug) }}"
-                    class="text-[16px] lg:text-[16px] font-semibold font-neutrif text-slate-800 cursor-pointer hover:text-cyan-500 transition-all ease-in-out duration-300 capitalize">{{ $agenda->title }}
+                    class="text-[16px] lg:text-[16px] font-semibold font-neutrif text-slate-800 cursor-pointer hover:text-cyan-500 transition-all ease-in-out duration-300 capitalize">{{ $excerptForTitle }}
                 </a>
                 <span class="text-[10px] text-slate-500 font-neutrif lg:text-sm"> <i
                         class="uil uil-calender text-lg"></i> {{ $agenda->tanggal_mulai_formatted }}</span>

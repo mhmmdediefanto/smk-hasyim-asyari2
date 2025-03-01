@@ -1,7 +1,6 @@
 <?php
 
 use App\Http\Controllers\AuthController;
-use App\Http\Controllers\CheckSlugController;
 use App\Http\Controllers\DashboardAgendaController;
 use App\Http\Controllers\DashboardBeritaController;
 use App\Http\Controllers\DashboardController;
@@ -90,10 +89,15 @@ Route::group(['middleware' => 'auth'], function () {
     Route::prefix('dashboard')->group(function () {
         Route::get('/', [DashboardController::class, 'index'])->name('dashboard');
 
-        Route::get('/settings', [DashboardController::class, 'settingShow'])->name('dashboard.settings');
+        // setting front
+        Route::get('/settings', [DashboardSettingsController::class, 'settingShow'])->name('dashboard.settings');
         Route::post('/settings', [DashboardSettingsController::class, 'addFront'])->name('dashboard.settings.add');
         Route::put('/settings/{id}', [DashboardSettingsController::class, 'updateFront'])->name('dashboard.settings.update');
         Route::delete('/settings/{id}', [DashboardSettingsController::class, 'destroyFront'])->name('dashboard.settings.delete');
+
+
+        // setting reset password
+        Route::put('/settings/reset-password/{id}', [AuthController::class, 'resetPassword'])->name('dashboard.settings.resetPassword');
 
         // berita
         Route::get('/berita', [DashboardBeritaController::class, 'index'])->name('dashboard.berita');
