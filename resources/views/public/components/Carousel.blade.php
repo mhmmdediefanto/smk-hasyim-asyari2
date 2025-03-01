@@ -1,4 +1,4 @@
-<div class="relative  w-full overflow-hidden">
+<div class="relative  w-full overflow-hidden overflow-x-hidden">
 
     <div class="flex flex-nowrap transition-transform duration-500 ease-in-out" id="carousel">
         @foreach ($carousels as $carousel)

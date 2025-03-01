@@ -9,6 +9,15 @@ use Illuminate\Support\Facades\Storage;
 
 class DashboardSettingsController extends Controller
 {
+
+    public function settingShow()
+    {
+        $settingsFront =  SettingsFront::first();
+    //   dd($settingsFront);
+        return view('dashboard.settings.index', compact('settingsFront'));
+    }
+
+
     public function addFront(Request $request)
     {
         // dd($request->all());

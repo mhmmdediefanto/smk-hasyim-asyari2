@@ -16,15 +16,15 @@
                 <div class="grid grid-cols-1 lg:grid-cols-2 gap-4">
 
                     @foreach ($beritas as $berita)
-                        <div class="w-full h-auto overflow-hidden bg-white shadow-md" data-aos="fade-up">
+                        <div class="w-full h-[400px] bg-white overflow-hidden  shadow-md" data-aos="fade-up">
                             <div class="w-full overflow-hidden shadow-sm">
                                 <img src="{{ asset('storage/' . $berita->image) }}"
                                     alt="{{ $berita->slug }}-smk-nu-hasyim-asy'ari-2-kudus"
-                                    class="w-full h-[150px] lg:h-[150px] hover:scale-110 transition duration-500 ease-in-out object-center">
+                                    class="w-full h-[150px] lg:h-[170px] hover:scale-110 transition duration-500 ease-in-out object-center">
                             </div>
-                            <div class="w-full h-full bg-white shadow-md">
+                            <div class="w-full h-full ">
                                 <div
-                                    class=" bg-white hover:border-t-4 hover:border-t-cyan-400 p-3 transition duration-500 ease-in-out h-full shadow-md">
+                                    class=" h-[150px] hover:border-t-4 hover:border-t-cyan-400 p-3 transition duration-500 ease-in-out">
 
                                     <div class="w-full">
                                         @php

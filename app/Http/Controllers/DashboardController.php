@@ -15,12 +15,4 @@ class DashboardController extends Controller
         $berita = Berita::count();
         return view('dashboard.index', compact('agenda', 'berita'));
     }
-
-    public function settingShow()
-    {
-        $settingsFront =  SettingsFront::first();
-
-    //   dd($settingsFront);
-        return view('dashboard.settings.index', compact('settingsFront'));
-    }
 }

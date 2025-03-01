@@ -1,7 +1,7 @@
 @extends('dashboard.layouts.main')
 
 @section('main')
-    <div class="w-full">
+    <div class="w-full flex gap-2 flex-col">
         <div class="card ">
             <div class="card-header">
                 <div class="flex justify-between items-center">
@@ -55,10 +55,10 @@
 
 
                             @if ($settingsFront)
-                                <input type="hidden" value="{{ $settingsFront->image_header ?? '' }}" name="image_old_header"
-                                    id="">
-                                <input type="hidden" value="{{ $settingsFront->image_footer ?? '' }}" name="image_old_footer"
-                                    id="">
+                                <input type="hidden" value="{{ $settingsFront->image_header ?? '' }}"
+                                    name="image_old_header" id="">
+                                <input type="hidden" value="{{ $settingsFront->image_footer ?? '' }}"
+                                    name="image_old_footer" id="">
                             @endif
                             <div class="mb-3">
                                 <label for="title" class="text-gray-800 text-sm font-medium inline-block mb-2">
@@ -139,6 +139,16 @@
                             </div>
                         </div>
                     @endif
+                </div>
+            </div>
+        </div>
+
+        <div class="card">
+            <div class="card-header">
+                <div class="flex flex-col">
+                    <h4 class="card-title font-nunito">Settigs Account</h4>
+                    <hr class="my-4">
+                    @include('public.components.settings.settting-account')
                 </div>
             </div>
         </div>
