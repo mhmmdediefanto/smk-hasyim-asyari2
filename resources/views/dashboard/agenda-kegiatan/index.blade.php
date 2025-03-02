@@ -26,7 +26,7 @@
                                 <tr class="capitalize font-nunito">
                                     <th class="px-6 py-3 text-start">image</th>
                                     <th class="px-6 py-3 text-start">title</th>
-                                    <th class="px-6 py-3 text-start">Category</th>
+                                    <th class="px-6 py-3 text-start">Penyelenggara</th>
                                     <th class="px-6 py-3 text-start">action</th>
                                 </tr>
                             </thead>
@@ -74,6 +74,10 @@
                                     </tr>
                                 @endforeach
                             </tbody>
+
+                            <div class="my-2">
+                                {{ $agendas->links() }}
+                            </div>
                         </table>
                     </div>
                 </div>

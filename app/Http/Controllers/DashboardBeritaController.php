@@ -20,7 +20,7 @@ class DashboardBeritaController extends Controller
     /******  64576a7b-155b-46c8-b819-4307ac4f0bc4  *******/
     public function index()
     {
-        $beritas = Berita::with('kategoriBerita', 'user')->select('id', 'title', 'image', 'kategori_berita_id')->latest()->get();
+        $beritas = Berita::with('kategoriBerita', 'user')->select('id', 'title', 'image', 'kategori_berita_id')->latest()->paginate(10);
         return view('dashboard.berita.index', compact('beritas'));
     }
 

@@ -5,7 +5,9 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <script src="https://cdn.tailwindcss.com"></script>
+     {{-- link inport tailwind --}}
+     @vite('resources/css/app.css')
+
     <title>Login - SKAHADA</title>
 </head>
 
@@ -15,10 +17,9 @@
         <div class="max-w-screen-xl m-0 sm:m-10 bg-white shadow sm:rounded-lg flex justify-center flex-1">
             <div class="lg:w-1/2 xl:w-5/12 p-6 sm:p-12">
                 <div class="flex items-center flex-col justify-center">
-                    <img src="{{ asset('logo/logo_smk_hasyim_asyari_2_kudus.png') }}"
-                        class="w-28 mx-auto" />
-                        <h1 class="font-bold text-blue-600 text-lg">SI-PANDU</h1>
-                        <p class="text-lg font-bold font-poppins">SMK NU HASYIM ASY'ARI 2 KUDUS</p>
+                    <img src="{{ asset('logo/logo_smk_hasyim_asyari_2_kudus.png') }}" class="w-28 mx-auto" />
+                    <h1 class="font-bold text-blue-600 text-lg">SI-PANDU</h1>
+                    <p class="text-lg font-bold font-poppins">SMK NU HASYIM ASY'ARI 2 KUDUS</p>
                 </div>
                 <div class="mt-12 flex flex-col items-center">
                     <h1 class="text-2xl xl:text-3xl font-extrabold">
@@ -32,10 +33,11 @@
                                 @csrf
                                 <input
                                     class="w-full px-8 py-4 rounded-lg font-medium bg-gray-100 border border-gray-200 placeholder-gray-500 text-sm focus:outline-none focus:border-gray-400 focus:bg-white"
-                                    type="email" placeholder="Email" name="email" />
+                                    type="email" placeholder="Email" name="email" autocomplete="username" />
                                 <input
                                     class="w-full px-8 py-4 rounded-lg font-medium bg-gray-100 border border-gray-200 placeholder-gray-500 text-sm focus:outline-none focus:border-gray-400 focus:bg-white mt-5"
-                                    type="password" placeholder="Password" name="password" />
+                                    type="password" placeholder="Password" name="password"
+                                    autocomplete="current-password" />
                                 <button
                                     class="mt-5 tracking-wide font-semibold bg-indigo-500 text-gray-100 w-full py-4 rounded-lg hover:bg-indigo-700 transition-all duration-300 ease-in-out flex items-center justify-center focus:shadow-outline focus:outline-none">
                                     <svg class="w-6 h-6 -ml-2" fill="none" stroke="currentColor" stroke-width="2"
