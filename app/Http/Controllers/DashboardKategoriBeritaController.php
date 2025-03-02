@@ -17,7 +17,7 @@ class DashboardKategoriBeritaController extends Controller
     /******  e03f93de-07e7-49ae-9d7b-8e5ee61f7fa9  *******/
     public function index()
     {
-        $kategories = KategoriBerita::select('id', 'name', 'slug')->latest()->get();
+        $kategories = KategoriBerita::select('id', 'name', 'slug')->latest()->paginate(10);
         return view('dashboard.kategori-berita.index', compact('kategories'));
     }
 

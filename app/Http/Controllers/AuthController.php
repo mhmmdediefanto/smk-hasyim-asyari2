@@ -2,12 +2,14 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\User;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Redirect;
+use Illuminate\Support\Facades\Validator;
 
 class AuthController extends Controller
 {
@@ -46,51 +48,70 @@ class AuthController extends Controller
         return redirect()->route('home');
     }
 
+
     public function resetPassword(Request $request, $id)
     {
-
         try {
-
             DB::beginTransaction();
 
+            // Definisi aturan validasi
             $rules = [
                 'password_lama' => 'required',
-                'password' => 'required',
-                'konfirmasi_password' => 'required',
+                'password' => [
+                    'required',
+                    'min:8',
+                    'regex:/^(?=.*[A-Z])(?=.*\d).+$/'
+                ],
+                'konfirmasi_password' => 'required|same:password',
             ];
+
+            $messages = [
+                'password.regex' => 'Password harus mengandung minimal satu huruf kapital dan satu angka.',
+                'konfirmasi_password.same' => 'Konfirmasi password harus sama dengan password baru.'
+            ];
+
+            // Proses validasi
+            $validator = Validator::make($request->all(), $rules, $messages);
+
+            if ($validator->fails()) {
+                return response()->json([
+                    'errors' => $validator->errors()
+                ], 400);
+            }
 
             $user = Auth::user();
 
-            // cek jika email berubah
+            // Cek apakah email berubah
             if ($request->email != $user->email) {
-                // cek apakah email sudah ada
-                $rules['email'] = 'required|email|unique:users';
-            }
-
-            if ($request->password_lama) {
-                // cek apakah password lama cocok dengan password di database 
-                if (!Hash::check($request->password_lama, $user->password)) {
-                    return back()->with(['error' => 'Password Lama Salah']);
+                if (User::where('email', $request->email)->exists()) {
+                    return response()->json(['errors' => ['email' => 'Email sudah digunakan']], 400);
                 }
-
-
-            }
-            if ($request->password_lama != $request->konfirmasi_password) {
-                return back()->with(['error' => 'Password Kofirmasi Tidak Cocok']);
             }
 
-            $validatedData = $request->validate($rules);
+            // Cek password lama
+            if (!Hash::check($request->password_lama, $user->password)) {
+                return response()->json(['errors' => ['password_lama' => 'Password Lama Tidak Cocok']], 400);
+            }
 
-            $validatedData['password'] = Hash::make($validatedData['password']);
+            // Update password
+            $user->update([
+                'email' => $request->email,
+                'password' => Hash::make($request->password),
+            ]);
 
-            dd($validatedData);
+            if (Auth::user()->id == $user->id) {
+                // Jika pengguna mengganti password sendiri, logout dan suruh login ulang
+                Auth::logout();
+                $request->session()->invalidate();
+                $request->session()->regenerateToken();
+
+                DB::commit();
+                return response()->json(data: ['success' => 'Password berhasil diubah! Silakan login kembali.']);
+            }
 
         } catch (\Throwable $th) {
-
             DB::rollBack();
-            return back()->with([
-                'error' => $th->getMessage()
-            ]);
+            return response()->json(['error' => $th->getMessage()], 500);
         }
     }
 }

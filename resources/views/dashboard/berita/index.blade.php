@@ -77,6 +77,10 @@
                                     </tr>
                                 @endforeach
                             </tbody>
+
+                            <div class="my-2">
+                                {{ $beritas->links() }}
+                            </div>
                         </table>
                     </div>
                 </div>

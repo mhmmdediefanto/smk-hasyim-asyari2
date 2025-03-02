@@ -87,6 +87,10 @@
                                     </tr>
                                 @endforeach
                             </tbody>
+
+                            <div class="my-2">
+                                {{ $kategories->links() }}
+                            </div>
                         </table>
                     </div>
                 </div>
