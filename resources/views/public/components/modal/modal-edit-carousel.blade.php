@@ -51,6 +51,8 @@
                           file:me-4
                           file:py-2 file:px-4"
                             required>
+                            <p class="text-[10px] italic font-neutrif text-red-700"> Uploaded :
+                                jpeg,png,jpg,gif,svg|max:2048</p>
                     </div>
 
                     <div class="mb-3">

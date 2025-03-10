@@ -75,10 +75,10 @@
                                 @endforeach
                             </tbody>
 
-                            <div class="my-2">
-                                {{ $agendas->links() }}
-                            </div>
                         </table>
+                    </div>
+                    <div class="my-2">
+                        {{ $agendas->links() }}
                     </div>
                 </div>
             </div>
