@@ -4,11 +4,12 @@ namespace App\Models;
 
 use Carbon\Carbon;
 use Cviebrock\EloquentSluggable\Sluggable;
+use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
 class Agenda extends Model
 {
-    use Sluggable;
+    use Sluggable, HasFactory;
 
     protected $table = 'agendas';
     protected $fillable = ['user_id', 'title', 'image', 'slug', 'tanggal_mulai', 'tanggal_selesai', 'tempat', 'penyelenggara', 'body'];

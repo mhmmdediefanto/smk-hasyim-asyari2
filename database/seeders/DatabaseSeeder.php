@@ -2,9 +2,11 @@
 
 namespace Database\Seeders;
 
-use App\Models\KategoriBerita;
-use App\Models\User;
+
 // use Illuminate\Database\Console\Seeds\WithoutModelEvents;
+
+use App\Models\Agenda;
+use App\Models\Berita;
 use Illuminate\Database\Seeder;
 
 class DatabaseSeeder extends Seeder
@@ -18,5 +20,8 @@ class DatabaseSeeder extends Seeder
             UserSeeder::class,
             KategoriBeritaSeeder::class,
         ]);
+
+        Berita::factory(100)->create();
+        Agenda::factory(100)->create();
     }
 }

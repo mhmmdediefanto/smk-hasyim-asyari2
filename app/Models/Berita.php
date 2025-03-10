@@ -5,12 +5,13 @@ namespace App\Models;
 use Carbon\Carbon;
 use Illuminate\Database\Eloquent\Model;
 use Cviebrock\EloquentSluggable\Sluggable;
+use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
 
 class Berita extends Model
 {
 
-    use Sluggable;
+    use Sluggable, HasFactory;
     protected $table = 'beritas';
     protected $fillable = ['user_id', 'kategori_berita_id', 'title', 'slug', 'image', 'excerpt', 'body'];
 

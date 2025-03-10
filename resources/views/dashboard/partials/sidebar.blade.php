@@ -2,7 +2,7 @@
 <div class="app-menu">
 
     <!-- Brand Logo -->
-    <a href="index.html" class="logo-box">
+    <a href="{{ route('dashboard') }}" class="logo-box">
         <img src="{{ asset('logo/logo_smk_fiks.png') }}" class="logo-light h-6" alt="Smk Nu Hasyim Asy'ari 2 Kudus">
         <img src="{{ asset('logo/logo_smk_fiks.png') }}" class="logo-dark h-6" alt="Smk Nu Hasyim Asy'ari 2 Kudus">
     </a>
