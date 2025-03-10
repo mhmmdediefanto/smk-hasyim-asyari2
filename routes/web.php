@@ -7,6 +7,7 @@ use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\DashboardKategoriBeritaController;
 use App\Http\Controllers\DashboardSettingsController;
 use App\Http\Controllers\DashbordCarouselManagementController;
+use App\Http\Controllers\GuruController;
 use App\Http\Controllers\KejuruanController;
 use App\Http\Controllers\PublicController;
 use App\Http\Controllers\SearchController;
@@ -45,7 +46,7 @@ Route::prefix('profile')->group(function () {
     Route::get('/kepala-sekolah', fn() => redirect()->route('maintenance'))->name('kepala-sekolah');
     Route::get('/wakil-kepala-sekolah', fn() => redirect()->route('maintenance'))->name('wakil-kepala-sekolah');
     Route::get('/kepala-tata-usaha', fn() => redirect()->route('maintenance'))->name('kepala-tata-usaha');
-    Route::get('/guru', fn() => redirect()->route('maintenance'))->name('guru');
+    Route::get('/guru', [GuruController::class, 'index'])->name('guru');
     Route::get('/tenaga-kependidikan', fn() => redirect()->route('maintenance'))->name('tenaga-kependidikan');
     Route::get('/data-peserta-didik', fn() => redirect()->route('maintenance'))->name('data-peserta-didik');
 });
