@@ -61,7 +61,8 @@
                               file:me-4
                               file:py-2 file:px-4
                               ">
-
+                            <p class="text-[10px] italic font-neutrif text-red-700"> Uploaded :
+                                jpeg,png,jpg,gif,svg|max:2048</p>
                         </div>
                         <div>
                             <label for="kategori_berita_id" class="text-gray-800 text-sm font-medium inline-block mb-2">

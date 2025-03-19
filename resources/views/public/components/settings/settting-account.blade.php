@@ -93,6 +93,8 @@
                     if (xhr.status === 400) {
                         let errors = xhr.responseJSON.errors;
 
+                        console.log(errors);
+                        
                         // Menampilkan error di masing-masing field
                         $.each(errors, function(key, value) {
                             $('#error-' + key).text(value[0]);
