@@ -162,7 +162,7 @@
 
 
     <!-- ======= Footer ======= -->
-    <footer id="footer" class="footer light-background">
+    <footer id="footer" class="footer bg-cyan-900 w-full ">
         @include('public.partials.footer', [
             'image_footer' => $dataFront ? $dataFront->image_footer : null,
             'title' => $dataFront ? $dataFront->title : null,
